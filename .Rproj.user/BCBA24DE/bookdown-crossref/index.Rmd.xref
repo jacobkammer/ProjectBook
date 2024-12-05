@@ -1,8 +1,9 @@
 h1:url-your-book-url-like-httpsbookdown.orgyihuibookdown url: your book url like https://bookdown.org/yihui/bookdown
 h1:cover-image-path-to-the-social-sharing-image-like-imagescover.jpg cover-image: path to the social sharing image like images/cover.jpg
-h1:about About
-h2:usage Usage
-h2:render-book Render book
+h1:introduction Introduction
+h1:build-atb-database Build ATB database
+h1:display-the-distribution-of-numeric-variables Display the Distribution of Numeric variables
+h1:display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques Display the Relationships between numeric Variables using multiple graphing techniques
 h2:preview-book Preview book
 fig:image Database Diagram
 

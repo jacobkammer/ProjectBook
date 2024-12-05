@@ -1,5 +1,5 @@
 --- 
-title: "Antibiotic Resistance"
+title: "The Effects of antibiotic resistance mutations on bacterial fitness"
 author: "Jacob W. Kammer"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -15,11 +15,12 @@ link-citations: yes
 github-repo: rstudio/bookdown-demo
 ---
 
-# About
+# Introduction
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
+Antibiotic resistance is increasing world wide in pathogenic microbial populations. Therapeutic and prophylactic use of antibiotics constitutes selective pressure that favors the evolution of antibiotic resistance strains. The durability of a resistance mutation in pathogens is partly determined by it's effect on the fitness of the organism.  Antibiotic resistance mutations usually target key biochemical processes, which impart a fitness cost to the microorganism. The data set used in the evaluation was obtained from the Dryad website. The origin of the data was from the article *The fitness costs of antibiotic resistance mutations* authored by *Melnyk, Wong and Kassen*. 
 
-## Usage 
+
+# Build ATB database 
 
 Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
 
@@ -27,16 +28,9 @@ Use second-level and higher headings within chapters like: `## A short section` 
 
 The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.
 
-## Render book
+# Display the Distribution of Numeric variables
 
-You can render the HTML version of this example book without changing anything:
-
-1. Find the **Build** pane in the RStudio IDE, and
-
-1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
-
-Or build the book from the R console:
-
+# Display the Relationships between numeric Variables using multiple graphing techniques
 ```{r, eval=FALSE}
 bookdown::render_book()
 ```

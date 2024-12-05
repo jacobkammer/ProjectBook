@@ -1,3 +1,4 @@
+fig:image
 fig:nice-fig
 tab:nice-tab
 eq:binom

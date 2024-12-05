@@ -61,5 +61,7 @@ knitr::write_bib(c(
 
 
 
-![testing images]()
+```{r image, fig.cap="Database Diagram", fig.align='center', out.width='100%'}
+knitr::include_graphics("Relationship.jpeg")
+```
 

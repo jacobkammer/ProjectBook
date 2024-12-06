@@ -3,7 +3,7 @@
     "path": "~/Projects_R/BOOKS/index.Rmd",
     "project_path": "index.Rmd",
     "type": "r_markdown",
-    "hash": "1694310916",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1733327597063.0,
@@ -12,8 +12,8 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "20,0",
-        "scrollLine": "13"
+        "cursorPosition": "60,0",
+        "scrollLine": "42"
     },
     "folds": "",
     "lastKnownWriteTime": 1733438615,

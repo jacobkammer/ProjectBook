@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>04-Microbial-Fitness</title>
+  <title>Chapter 8 Analysis | 04-Microbial-Fitness</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="04-Microbial-Fitness" />
+  <meta property="og:title" content="Chapter 8 Analysis | 04-Microbial-Fitness" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="04-Microbial-Fitness" />
+  <meta name="twitter:title" content="Chapter 8 Analysis | 04-Microbial-Fitness" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -36,8 +36,8 @@ set in the _output.yml file.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html"/>
+<link rel="prev" href="populate-each-table-of-the-atb.db-with-the-selected-data.html"/>
+<link rel="next" href="create-ranges-of-fitness-value-and-assign-to-general-categories.-encode-the-results-in-a-table-using-the-gt-package..html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -198,21 +198,85 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">04-Microbial-Fitness</h1>
-<p class="author"><em>kammer</em></p>
-<p class="date"><em>2024-12-08</em></p>
-</div>
-<div id="display-the-distribution-of-numeric-variables" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Display the Distribution of Numeric variables<a href="index.html#display-the-distribution-of-numeric-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="analysis" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Analysis<a href="analysis.html#analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The analysis surveyed the distribution of the numeric variables and their relationships. The principle goal of the analysis was to study the effects of antibiotic resistance gene mutations on the fitness of Staphylococcus aureus. This analysis will contribute to the development of a computer model to study the effects of antibiotic resistance on the growth of Staphycococcus aureus in blood.</p>
+<p>Below are the 4 tables and the relationships between each one.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="analysis.html#cb26-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb26-2"><a href="analysis.html#cb26-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> costR <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="analysis.html#cb26-3" tabindex="-1"></a>  <span class="fu">select</span>(fitness) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-4"><a href="analysis.html#cb26-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fitness))<span class="sc">+</span></span>
+<span id="cb26-5"><a href="analysis.html#cb26-5" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.01</span>)<span class="sc">+</span></span>
+<span id="cb26-6"><a href="analysis.html#cb26-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Range of Fitness Values&quot;</span>)<span class="sc">+</span></span>
+<span id="cb26-7"><a href="analysis.html#cb26-7" tabindex="-1"></a>  <span class="fu">theme</span>()</span>
+<span id="cb26-8"><a href="analysis.html#cb26-8" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="analysis.html#cb26-9" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> costR, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> SE))<span class="sc">+</span></span>
+<span id="cb26-10"><a href="analysis.html#cb26-10" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.01</span>)<span class="sc">+</span></span>
+<span id="cb26-11"><a href="analysis.html#cb26-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span> <span class="st">&quot;Range of SE values&quot;</span>)<span class="sc">+</span></span>
+<span id="cb26-12"><a href="analysis.html#cb26-12" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb26-13"><a href="analysis.html#cb26-13" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="analysis.html#cb26-14" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> costR, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Selection_coefficient))<span class="sc">+</span></span>
+<span id="cb26-15"><a href="analysis.html#cb26-15" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.01</span>)<span class="sc">+</span></span>
+<span id="cb26-16"><a href="analysis.html#cb26-16" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Range of Selection coefficient values&quot;</span>,</span>
+<span id="cb26-17"><a href="analysis.html#cb26-17" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Selection Coefficient&quot;</span>)<span class="sc">+</span></span>
+<span id="cb26-18"><a href="analysis.html#cb26-18" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb26-19"><a href="analysis.html#cb26-19" tabindex="-1"></a></span>
+<span id="cb26-20"><a href="analysis.html#cb26-20" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> costR <span class="sc">%&gt;%</span> </span>
+<span id="cb26-21"><a href="analysis.html#cb26-21" tabindex="-1"></a>  <span class="fu">select</span>(MIC) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-22"><a href="analysis.html#cb26-22" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> MIC))<span class="sc">+</span></span>
+<span id="cb26-23"><a href="analysis.html#cb26-23" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>)<span class="sc">+</span></span>
+<span id="cb26-24"><a href="analysis.html#cb26-24" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Range of Minimum Inhibitory Concentration values&quot;</span>)<span class="sc">+</span></span>
+<span id="cb26-25"><a href="analysis.html#cb26-25" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;magma&quot;</span>)</span>
+<span id="cb26-26"><a href="analysis.html#cb26-26" tabindex="-1"></a></span>
+<span id="cb26-27"><a href="analysis.html#cb26-27" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="analysis.html#cb27-1" tabindex="-1"></a>p1</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="analysis.html#cb28-1" tabindex="-1"></a>p2</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-3.png" width="672" /></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="analysis.html#cb29-1" tabindex="-1"></a>p3</span></code></pre></div>
+<pre><code>## Warning: Removed 51 rows containing non-finite outside the scale range
+## (`stat_bin()`).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-4.png" width="672" />
+## Relationship between Numeric Variables
+The relationship between the numeric variables of 1)fitness, 2)SE and
+3)Selection_coefficient are studied using 4 different methods or graphing techniques.</p>
+<p>Scatter plot with color or size Encoding. The x and y axis encodes two of the three variables. Color or size is used to represent the third variable.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="analysis.html#cb31-1" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> costR, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fitness, <span class="at">y =</span> Selection_coefficient, <span class="at">color =</span> SE))<span class="sc">+</span></span>
+<span id="cb31-2"><a href="analysis.html#cb31-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Scatter Plot with color encoding&quot;</span>,</span>
+<span id="cb31-3"><a href="analysis.html#cb31-3" tabindex="-1"></a>                    <span class="at">x=</span><span class="st">&quot;Fitness&quot;</span>,</span>
+<span id="cb31-4"><a href="analysis.html#cb31-4" tabindex="-1"></a>                    <span class="at">y =</span> <span class="st">&quot;Selection Coefficient&quot;</span>,</span>
+<span id="cb31-5"><a href="analysis.html#cb31-5" tabindex="-1"></a>                    <span class="at">color =</span> <span class="st">&quot;SE&quot;</span>)</span>
+<span id="cb31-6"><a href="analysis.html#cb31-6" tabindex="-1"></a>p4</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="analysis.html#cb32-1" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> costR, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fitness, <span class="at">y =</span> Selection_coefficient, <span class="at">size =</span> SE))<span class="sc">+</span></span>
+<span id="cb32-2"><a href="analysis.html#cb32-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb32-3"><a href="analysis.html#cb32-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Scatter plot with size encoding&quot;</span>,</span>
+<span id="cb32-4"><a href="analysis.html#cb32-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Fitness&quot;</span>,</span>
+<span id="cb32-5"><a href="analysis.html#cb32-5" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Selection Coefficient&quot;</span>,</span>
+<span id="cb32-6"><a href="analysis.html#cb32-6" tabindex="-1"></a>       <span class="at">size =</span> <span class="st">&quot;SE&quot;</span>)</span>
+<span id="cb32-7"><a href="analysis.html#cb32-7" tabindex="-1"></a>p5</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<p>Pair Plot (Scatter plot Matrix). The ‘GGally’ package is used to create a scatter plot matrix to visualize pairwise relationships between multiple variables.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="analysis.html#cb33-1" tabindex="-1"></a>numericonly <span class="ot">&lt;-</span> costR <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="analysis.html#cb33-2" tabindex="-1"></a>  <span class="fu">select</span>(fitness, Selection_coefficient, SE)</span>
+<span id="cb33-3"><a href="analysis.html#cb33-3" tabindex="-1"></a><span class="co">#Use the data</span></span>
+<span id="cb33-4"><a href="analysis.html#cb33-4" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(numericonly, <span class="at">title =</span> <span class="st">&#39;Pair Plot&#39;</span>)</span>
+<span id="cb33-5"><a href="analysis.html#cb33-5" tabindex="-1"></a>g</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Scatter plot Matrix using the ‘Lattice’ package</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="analysis.html#cb34-1" tabindex="-1"></a><span class="fu">splom</span>(numericonly,</span>
+<span id="cb34-2"><a href="analysis.html#cb34-2" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">&quot;Scatterplot Matrix&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="populate-each-table-of-the-atb.db-with-the-selected-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="create-ranges-of-fitness-value-and-assign-to-general-categories.-encode-the-results-in-a-table-using-the-gt-package..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -243,7 +307,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-analysis.Rmd",
 "text": "Edit"
 },
 "history": {

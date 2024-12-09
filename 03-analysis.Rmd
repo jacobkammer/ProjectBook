@@ -1,0 +1,82 @@
+# Analysis
+The analysis surveyed the distribution of the numeric variables and their relationships.  The principle goal of the analysis was to study the effects of antibiotic resistance gene mutations on the fitness of Staphylococcus aureus.  This analysis will contribute to the development of a computer model to study the effects of antibiotic resistance on the growth of Staphycococcus aureus in blood. 
+
+
+
+Below are the 4 tables and the relationships between each one.
+```{r echo=TRUE}
+library(tidyverse)
+p <- costR %>% 
+  select(fitness) %>% 
+  ggplot(mapping = aes(x = fitness))+
+  geom_histogram(binwidth = 0.01)+
+  labs(title = "Range of Fitness Values")+
+  theme()
+
+p1 <- ggplot(data = costR, mapping = aes(x = SE))+
+  geom_histogram(binwidth = 0.01)+
+  labs(title= "Range of SE values")+
+  theme_classic()
+
+p2 <- ggplot(data = costR, mapping = aes(x = Selection_coefficient))+
+  geom_histogram(binwidth = 0.01)+
+  labs(title="Range of Selection coefficient values",
+       x = "Selection Coefficient")+
+  theme_bw()
+
+p3 <- costR %>% 
+  select(MIC) %>% 
+  ggplot(mapping = aes(x = MIC))+
+  geom_histogram(bins = 15)+
+  labs(title = "Range of Minimum Inhibitory Concentration values")+
+  scale_fill_viridis_d(option = "magma")
+
+p
+p1
+p2
+p3
+```
+## Relationship between Numeric Variables
+The relationship between the numeric variables of 1)fitness, 2)SE and
+3)Selection_coefficient are studied using 4 different methods or graphing techniques. 
+
+Scatter plot with color or size Encoding. The x and y axis encodes two of the three variables.  Color or size is used to represent the third variable.
+
+```{r echo=TRUE}
+p4 <- ggplot(data = costR, mapping = aes(x = fitness, y = Selection_coefficient, color = SE))+
+  geom_point()+labs(title = "Scatter Plot with color encoding",
+                    x="Fitness",
+                    y = "Selection Coefficient",
+                    color = "SE")
+p4
+p5 <- ggplot(data = costR, mapping = aes(x = fitness, y = Selection_coefficient, size = SE))+
+  geom_point()+
+  labs(title = "Scatter plot with size encoding",
+       x = "Fitness",
+       y = "Selection Coefficient",
+       size = "SE")
+p5
+```
+
+Pair Plot (Scatter plot Matrix). The 'GGally' package is used to create a scatter plot matrix to visualize pairwise relationships between multiple variables.
+
+```{r}
+numericonly <- costR %>% 
+  select(fitness, Selection_coefficient, SE)
+#Use the data
+g <- ggpairs(numericonly, title = 'Pair Plot')
+g
+```
+
+Scatter plot Matrix using the 'Lattice' package
+
+```{r echo=TRUE}
+splom(numericonly,
+      main = "Scatterplot Matrix")
+```
+
+
+
+
+
+

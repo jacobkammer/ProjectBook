@@ -1,0 +1,214 @@
+---
+title: "04-Microbial-Fitness"
+author: "kammer"
+date: "2024-12-08"
+output: html_document
+---
+
+
+# Create ranges of fitness value and assign to general categories.  Encode the results in a table using the 'gt()' package.
+```{r echo=FALSE}
+library(tidyverse)
+costR %>% 
+  mutate(GroupFIT = case_when(fitness > 1.35 ~ "Most Fit of All",
+                              between(fitness, 1.25, 1.35)~ "Highly Fit",
+                              between(fitness, 1.0, 1.25)~ "Fit",
+                              between(fitness, .75, 1.0) ~ "Less Fit",
+                              between(fitness, .35, .75)~ "Much Less Fit",
+                              fitness<.35 ~ "Least Fit of All",
+                              TRUE ~ "Unknown")) %>% 
+  select(GroupFIT, bacteria) %>% 
+  group_by(GroupFIT) %>% 
+  tally() %>% 
+  mutate(pct = round(100 *(n/sum(n)), digits =3)) %>%
+  arrange(factor(GroupFIT, levels = c("Most Fit of All", "Highly Fit",
+                                      "Fit", "Less Fit",
+                                      "Much Less Fit"),
+                 "Least Fit of All")) %>% 
+  gt() %>% 
+  tab_header(title = "Fitness Groups") %>% 
+  cols_label(GroupFIT = "Group",
+             n = "Number of organisms",
+             pct = "Percentage"
+             )
+
+
+```
+
+
+# Analysis of Staphycococcal aureus.
+
+The cell wall is an important target of mutations that
+confer antibiotic resistance.  The bacterial cell wall is built with alternating monomers of N-Acetylglucosamine and n-Acetylmuramic acid forming the peptidoglycan of the cell wall.  Staphycococcus aureus and other gram positive organisms have a much greater amount of peptidoglycan in the cell wall.  This biochemical difference in cell wall structure suggests that there could be a significant difference in fitness costs between gram positive and gram negative organisms.  
+
+```{r echo=FALSE}
+GramFIT <- costR %>% 
+  filter(gram_stain == "negative" | gram_stain == "positive") %>%
+  group_by(gram_stain) %>% 
+  summarise(mean_fitness = mean(fitness),
+            IQR = IQR(fitness),
+            Minumum = min(fitness),
+            Maximum = max(fitness),
+            Standard_deviation = sd(fitness))
+
+GramFIT %>% 
+  gt() %>% 
+  tab_header(title = "Differences in fitness based on gram stain") %>% 
+  cols_label(gram_stain = "Gram stain",
+             mean_fitness = "Mean Fitness",
+             IQR = "Interquantile Range",
+             Minumum="Minimum",
+             Maximum= "Maximum",
+             Standard_deviation= "Standard Deviation")
+
+GramFIT
+```
+
+Gram-positive bacteria had a significantly
+greater fitness costs associated with resistance mutations
+(mean fitness = 0.822) when compared with Gram-negative
+bacteria (mean fitness = 0.973). Caution must be used in interpreting
+this result because there were a greater number of Gram-negative
+than Gram-positive bacteria in the data set.
+
+
+```{r}
+costR %>% 
+  ggplot(mapping = aes(x=gram_stain, y=fitness))+
+  geom_boxplot()
+```
+
+A boxplot of fitness between gram + and gram - organisms does not show
+much of a difference between the two groups.
+
+
+
+# Effect of antibiotic class on fitness
+```{r}
+costR %>% 
+  select(antibioticClass, fitness) %>% 
+  group_by(antibioticClass) %>% 
+  summarise(mean_cost = mean(fitness),
+            stddev = sd(fitness, na.rm = TRUE),
+            meansd_l = mean_cost - stddev,
+            meansd_u = mean_cost + stddev) %>% 
+  ggplot(mapping = aes(x= mean_cost, y = antibioticClass))+
+  geom_point()+
+  geom_vline(xintercept = 1)+
+  geom_errorbar(mapping = aes(xmin = meansd_l, xmax = meansd_u))+
+  labs(x = "Mean Fitness Cost", y = "Antibiotic Class")+
+  ggtitle("Fitness Cost each Antibiotic Class")
+```
+
+# The dihydrofolate reductase inhibitors appear to be either cost-free or the costs are so small they cannot be detected by the assay techniques used in this study. 
+
+
+
+
+# Mean relative fitness and 95% CI of antibiotic Resistance mutation
+associated with a specific antibiotic, Fitness cost < 1 indicates less fit and Fitness Cost > 1 associated with more fit.
+
+```{r echo=FALSE}
+costR %>% 
+  select(antibioticType, fitness) %>% 
+  group_by(antibioticType) %>% 
+  summarise(mean_cost = mean(fitness),
+            stddev = sd(fitness, na.rm = TRUE),
+            meansd_l = mean_cost - stddev,
+            meansd_u = mean_cost + stddev) %>% 
+  ggplot(mapping = aes(x= mean_cost, y = antibioticType))+
+  geom_point()+
+  geom_vline(xintercept = 1)+
+  geom_errorbar(mapping = aes(xmin = meansd_l, xmax = meansd_u))+
+  labs(x = "Mean Fitness Cost", y = "Antibiotic")+
+  ggtitle("Fitness Cost each Antibiotic")
+
+```
+
+The antibiotic Trimethoprim has mean fitness of cost of greater than 1, indicating that the gene mutation that creates resistance to Trimethoprim does not negatively impact microbial fitness. Trimethoprim is a member of the drug class dihydrofolate reductase inhibitors.  This finding correlates with the graph of fitness and drug class. 
+
+
+
+```{r echo=FALSE}
+costR %>% 
+  select(bacteria, fitness) %>% 
+  group_by(bacteria) %>% 
+  summarise(mean_cost = mean(fitness),
+            stddev = sd(fitness, na.rm = TRUE),
+            meansd_l = mean_cost - stddev,
+            meansd_u = mean_cost + stddev) %>% 
+  ggplot(mapping = aes(x = mean_cost, y =bacteria))+
+  geom_point()+
+  geom_vline(xintercept = 1)+
+  geom_errorbar(mapping = aes(xmin = meansd_l, xmax = meansd_u))+
+  labs(x = "Mean Fitness Cost", y = "Bacteria")+
+  ggtitle("Fitness Cost per Bacterial Species")
+```
+Resistance mutations in two species, Enterococcus faecium and Borrelia burgorferi, showed no evidence for a fitness cost.  Other bacteria species had a fitness cost to Mean relative fitness and 95% CI of antibiotic resistance mutation associated with a given bacteria Fitness cost < 1 indicates less fit.
+
+
+
+#Create a heat map with antibiotic and bacteria as the two categorical variables and fitness as a numeric variable.
+
+```{r echo=FALSE}
+summary_data <- costR %>%
+  drop_na() %>% 
+  group_by(bacteria, antibioticType, fitness) %>%
+  summarize(MeanFITNESS = mean(fitness))
+ggplot(summary_data, aes(x = antibioticType, y = bacteria, fill = fitness)) +
+  geom_tile() +
+  scale_fill_gradient(low = "blue", high = "red") +
+  theme_minimal() +
+  labs(title = "Heat Map of Values by Antibiotic and Bacteria",
+       x = "Antibiotic",
+       y = "Bacteria",
+       fill = "fitness")
+```
+
+
+Analysis of Staph aureus gene mutations
+How many Staph aureus gene mutations associated with fitness is < 1, indicating less fit?
+
+```{r echo=FALSE}
+NumBacterialessFIT <- costR %>% 
+  select(bacteria, gene_mutation, fitness) %>% 
+  filter(bacteria == "S. aureus" & fitness < 1.0) %>% 
+  distinct(gene_mutation) %>% 
+  tally()
+NumBacterialessFIT
+```
+
+How many Staph aureus gene mutations associated with fitness is > 1, indicating improved fitness?
+
+```{r echo=FALSE}
+NumBacteriamoreFit <- costR %>% 
+  select(bacteria, gene_mutation, fitness) %>% 
+  filter(bacteria == "S. aureus" & fitness > 1.0) %>% 
+  distinct(gene_mutation) %>% 
+  tally()
+NumBacteriamoreFit
+```
+
+There are 5 gene mutations in Staph aureus associated with improved microbial fitness and 44 gene mutations associated with a decrease in fitness.
+
+What are the gene mutations associated with a decrease and increase in microbial fitness.
+
+```{r}
+BacterialessFIT <- costR %>% 
+  select(bacteria, gene_mutation, fitness) %>% 
+  filter(bacteria == "S. aureus" & fitness < 1.0) %>% 
+  distinct(gene_mutation) %>% 
+rename("Gene Mutation" = gene_mutation)
+
+BacterialessFIT
+```
+
+```{r}
+BacteriaMoreFit <- costR %>% 
+  select(bacteria, gene_mutation, fitness) %>% 
+  filter(bacteria == "S. aureus" & fitness > 1.0) %>% 
+  distinct(gene_mutation) %>% 
+rename("Gene Mutation" = gene_mutation)
+BacteriaMoreFit
+```
+Three of the five gene mutations that are associated with improved fitness and mutations in the gene that codes for the dihydrofolate reductase inhibitor.

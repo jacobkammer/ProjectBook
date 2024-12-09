@@ -1,11 +1,18 @@
+```{r setup, include=FALSE}
+library(tidyverse)
+library(DBI)
+library(RSQLite)
+library(viridis)
+library(GGally)
+library(lattice)
+library(gt)
+knitr::opts_chunk$set(echo = TRUE)
+
+
+```
+
+
 # Introduction
 
 Antibiotic resistance is increasing world wide in pathogenic microbial populations. Therapeutic and prophylactic use of antibiotics constitutes selective pressure that favors the evolution of antibiotic resistance strains. The durability of a resistance mutation in pathogens is partly determined by it's effect on the fitness of the organism.  Antibiotic resistance mutations usually target key biochemical processes, which impart a fitness cost to the microorganism. The data set used in the evaluation was obtained from the Dryad website. The origin of the data was from the article *The fitness costs of antibiotic resistance mutations* authored by *Melnyk, Wong and Kassen*. 
 
-## A section
-
-All chapter sections start with a second-level (`##`) or higher heading followed by your section title, like the sections above and below here. You can have as many as you want within a chapter.
-
-### An unnumbered section {-}
-
-Chapters and sections are numbered by default. To un-number a heading, add a `{.unnumbered}` or the shorter `{-}` at the end of the heading, like in this section.

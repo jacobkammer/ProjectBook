@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>04-Microbial-Fitness</title>
+  <title>Chapter 11 Effect of antibiotic class on fitness | 04-Microbial-Fitness</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="04-Microbial-Fitness" />
+  <meta property="og:title" content="Chapter 11 Effect of antibiotic class on fitness | 04-Microbial-Fitness" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="04-Microbial-Fitness" />
+  <meta name="twitter:title" content="Chapter 11 Effect of antibiotic class on fitness | 04-Microbial-Fitness" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -36,8 +36,8 @@ set in the _output.yml file.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html"/>
+<link rel="prev" href="analysis-of-staphycococcal-aureus..html"/>
+<link rel="next" href="the-dihydrofolate-reductase-inhibitors-appear-to-be-either-cost-free-or-the-costs-are-so-small-they-cannot-be-detected-by-the-assay-techniques-used-in-this-study..html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -198,21 +198,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">04-Microbial-Fitness</h1>
-<p class="author"><em>kammer</em></p>
-<p class="date"><em>2024-12-08</em></p>
-</div>
-<div id="display-the-distribution-of-numeric-variables" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Display the Distribution of Numeric variables<a href="index.html#display-the-distribution-of-numeric-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="effect-of-antibiotic-class-on-fitness" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Effect of antibiotic class on fitness<a href="effect-of-antibiotic-class-on-fitness.html#effect-of-antibiotic-class-on-fitness" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="effect-of-antibiotic-class-on-fitness.html#cb37-1" tabindex="-1"></a>costR <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a href="effect-of-antibiotic-class-on-fitness.html#cb37-2" tabindex="-1"></a>  <span class="fu">select</span>(antibioticClass, fitness) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-3"><a href="effect-of-antibiotic-class-on-fitness.html#cb37-3" tabindex="-1"></a>  <span class="fu">group_by</span>(antibioticClass) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-4"><a href="effect-of-antibiotic-class-on-fitness.html#cb37-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_cost =</span> <span class="fu">mean</span>(fitness),</span>
+<span id="cb37-5"><a href="effect-of-antibiotic-class-on-fitness.html#cb37-5" tabindex="-1"></a>            <span class="at">stddev =</span> <span class="fu">sd</span>(fitness, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb37-6"><a href="effect-of-antibiotic-class-on-fitness.html#cb37-6" tabindex="-1"></a>            <span class="at">meansd_l =</span> mean_cost <span class="sc">-</span> stddev,</span>
+<span id="cb37-7"><a href="effect-of-antibiotic-class-on-fitness.html#cb37-7" tabindex="-1"></a>            <span class="at">meansd_u =</span> mean_cost <span class="sc">+</span> stddev) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-8"><a href="effect-of-antibiotic-class-on-fitness.html#cb37-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span> mean_cost, <span class="at">y =</span> antibioticClass))<span class="sc">+</span></span>
+<span id="cb37-9"><a href="effect-of-antibiotic-class-on-fitness.html#cb37-9" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb37-10"><a href="effect-of-antibiotic-class-on-fitness.html#cb37-10" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb37-11"><a href="effect-of-antibiotic-class-on-fitness.html#cb37-11" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">xmin =</span> meansd_l, <span class="at">xmax =</span> meansd_u))<span class="sc">+</span></span>
+<span id="cb37-12"><a href="effect-of-antibiotic-class-on-fitness.html#cb37-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Mean Fitness Cost&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Antibiotic Class&quot;</span>)<span class="sc">+</span></span>
+<span id="cb37-13"><a href="effect-of-antibiotic-class-on-fitness.html#cb37-13" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Fitness Cost each Antibiotic Class&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="analysis-of-staphycococcal-aureus..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-dihydrofolate-reductase-inhibitors-appear-to-be-either-cost-free-or-the-costs-are-so-small-they-cannot-be-detected-by-the-assay-techniques-used-in-this-study..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -243,7 +252,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-Microbial-Fitness.Rmd",
 "text": "Edit"
 },
 "history": {

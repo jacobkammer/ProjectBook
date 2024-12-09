@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>04-Microbial-Fitness</title>
+  <title>Chapter 5 Data set Metrics | 04-Microbial-Fitness</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="04-Microbial-Fitness" />
+  <meta property="og:title" content="Chapter 5 Data set Metrics | 04-Microbial-Fitness" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="04-Microbial-Fitness" />
+  <meta name="twitter:title" content="Chapter 5 Data set Metrics | 04-Microbial-Fitness" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -36,8 +36,8 @@ set in the _output.yml file.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html"/>
+<link rel="prev" href="build-atb-database.html"/>
+<link rel="next" href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -198,21 +198,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">04-Microbial-Fitness</h1>
-<p class="author"><em>kammer</em></p>
-<p class="date"><em>2024-12-08</em></p>
+<div id="data-set-metrics" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Data set Metrics<a href="data-set-metrics.html#data-set-metrics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The data set is composed of multiple instances of common pathogenic microorganisms, both gram positive and gram cost, Selection coefficient, standard error, specific gene mutations, antibiotics and antibiotic class. Additional information included reference population, gene target and bacterial medium used to grow the different bacterial species. The data focuses on fitness effects of <strong>single</strong> chromosomal mutations.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data-set-metrics.html#cb5-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;Relationship.jpeg&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="Relationship.jpeg" alt="Database Diagram" width="100%" />
+<p class="caption">
+(#fig:image_relationship)Database Diagram
+</p>
 </div>
-<div id="display-the-distribution-of-numeric-variables" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Display the Distribution of Numeric variables<a href="index.html#display-the-distribution-of-numeric-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-set-metrics.html#cb6-1" tabindex="-1"></a><span class="co">#Create ATB database ####</span></span>
+<span id="cb6-2"><a href="data-set-metrics.html#cb6-2" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb6-3"><a href="data-set-metrics.html#cb6-3" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb6-4"><a href="data-set-metrics.html#cb6-4" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-5"><a href="data-set-metrics.html#cb6-5" tabindex="-1"></a>antibiotic_db <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="at">drv =</span> RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(),                           <span class="st">&quot;C:/Users/Jacob/Documents/Projects_R/553_WLF02/databases_WLF/ATB.db&quot;</span>)</span>
+<span id="cb6-6"><a href="data-set-metrics.html#cb6-6" tabindex="-1"></a><span class="co">#Create the tables that will populate the ATB database</span></span>
+<span id="cb6-7"><a href="data-set-metrics.html#cb6-7" tabindex="-1"></a><span class="co">#Create Antibiotic_Table containing antibiotics and class</span></span>
+<span id="cb6-8"><a href="data-set-metrics.html#cb6-8" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="data-set-metrics.html#cb6-9" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="data-set-metrics.html#cb6-10" tabindex="-1"></a><span class="fu">dbExecute</span>(antibiotic_db, <span class="st">&quot;</span></span>
+<span id="cb6-11"><a href="data-set-metrics.html#cb6-11" tabindex="-1"></a><span class="st">  CREATE TABLE IF NOT EXISTS Antibiotic_Table (</span></span>
+<span id="cb6-12"><a href="data-set-metrics.html#cb6-12" tabindex="-1"></a><span class="st">    antibioticType varchar(20) NOT NULL PRIMARY KEY,</span></span>
+<span id="cb6-13"><a href="data-set-metrics.html#cb6-13" tabindex="-1"></a><span class="st">    antibioticClass varchar(20)</span></span>
+<span id="cb6-14"><a href="data-set-metrics.html#cb6-14" tabindex="-1"></a><span class="st">  );</span></span>
+<span id="cb6-15"><a href="data-set-metrics.html#cb6-15" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data-set-metrics.html#cb8-1" tabindex="-1"></a><span class="co">#Create Bacteria table containing bacteria,</span></span>
+<span id="cb8-2"><a href="data-set-metrics.html#cb8-2" tabindex="-1"></a><span class="co">#gram stain, gene target and gene mutation</span></span>
+<span id="cb8-3"><a href="data-set-metrics.html#cb8-3" tabindex="-1"></a><span class="fu">dbExecute</span>(antibiotic_db, <span class="st">&quot;</span></span>
+<span id="cb8-4"><a href="data-set-metrics.html#cb8-4" tabindex="-1"></a><span class="st">  CREATE TABLE IF NOT EXISTS Bacteria (</span></span>
+<span id="cb8-5"><a href="data-set-metrics.html#cb8-5" tabindex="-1"></a><span class="st">    bacteria varchar(10) NOT NULL PRIMARY KEY,</span></span>
+<span id="cb8-6"><a href="data-set-metrics.html#cb8-6" tabindex="-1"></a><span class="st">    gram_stain varchar(10),</span></span>
+<span id="cb8-7"><a href="data-set-metrics.html#cb8-7" tabindex="-1"></a><span class="st">    gene_target varchar(10),</span></span>
+<span id="cb8-8"><a href="data-set-metrics.html#cb8-8" tabindex="-1"></a><span class="st">    gene_mutation varchar(15),</span></span>
+<span id="cb8-9"><a href="data-set-metrics.html#cb8-9" tabindex="-1"></a><span class="st">    serial_num real</span></span>
+<span id="cb8-10"><a href="data-set-metrics.html#cb8-10" tabindex="-1"></a><span class="st">  );</span></span>
+<span id="cb8-11"><a href="data-set-metrics.html#cb8-11" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data-set-metrics.html#cb10-1" tabindex="-1"></a><span class="co">#create microbial fitness table</span></span>
+<span id="cb10-2"><a href="data-set-metrics.html#cb10-2" tabindex="-1"></a><span class="fu">dbExecute</span>(antibiotic_db, <span class="st">&quot;</span></span>
+<span id="cb10-3"><a href="data-set-metrics.html#cb10-3" tabindex="-1"></a><span class="st">  CREATE TABLE IF NOT EXISTS microbial_fitness (</span></span>
+<span id="cb10-4"><a href="data-set-metrics.html#cb10-4" tabindex="-1"></a><span class="st">    fitness varchar(10) NOT NULL PRIMARY KEY,</span></span>
+<span id="cb10-5"><a href="data-set-metrics.html#cb10-5" tabindex="-1"></a><span class="st">    MIC real,</span></span>
+<span id="cb10-6"><a href="data-set-metrics.html#cb10-6" tabindex="-1"></a><span class="st">    Selection_coefficient real,</span></span>
+<span id="cb10-7"><a href="data-set-metrics.html#cb10-7" tabindex="-1"></a><span class="st">    SE real,</span></span>
+<span id="cb10-8"><a href="data-set-metrics.html#cb10-8" tabindex="-1"></a><span class="st">    gene_mutation varchar(50),</span></span>
+<span id="cb10-9"><a href="data-set-metrics.html#cb10-9" tabindex="-1"></a><span class="st">    antibiotic varchar(50),</span></span>
+<span id="cb10-10"><a href="data-set-metrics.html#cb10-10" tabindex="-1"></a><span class="st">    FOREIGN KEY (gene_mutation) REFERENCES Bacteria (gene_mutation),</span></span>
+<span id="cb10-11"><a href="data-set-metrics.html#cb10-11" tabindex="-1"></a><span class="st">    FOREIGN KEY (antibiotic) REFERENCES Antibiotic_Table (antibioticType)</span></span>
+<span id="cb10-12"><a href="data-set-metrics.html#cb10-12" tabindex="-1"></a><span class="st">  );</span></span>
+<span id="cb10-13"><a href="data-set-metrics.html#cb10-13" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="data-set-metrics.html#cb12-1" tabindex="-1"></a><span class="co">#create Laboratory standard table</span></span>
+<span id="cb12-2"><a href="data-set-metrics.html#cb12-2" tabindex="-1"></a><span class="fu">dbExecute</span>(antibiotic_db, <span class="st">&quot;</span></span>
+<span id="cb12-3"><a href="data-set-metrics.html#cb12-3" tabindex="-1"></a><span class="st">  CREATE TABLE IF NOT EXISTS Laboratory_standard (</span></span>
+<span id="cb12-4"><a href="data-set-metrics.html#cb12-4" tabindex="-1"></a><span class="st">    strain_reference varchar(25),</span></span>
+<span id="cb12-5"><a href="data-set-metrics.html#cb12-5" tabindex="-1"></a><span class="st">    technique varchar(20),</span></span>
+<span id="cb12-6"><a href="data-set-metrics.html#cb12-6" tabindex="-1"></a><span class="st">    medium varchar(20),</span></span>
+<span id="cb12-7"><a href="data-set-metrics.html#cb12-7" tabindex="-1"></a><span class="st">    serial_num real,</span></span>
+<span id="cb12-8"><a href="data-set-metrics.html#cb12-8" tabindex="-1"></a><span class="st">    FOREIGN KEY (serial_num) REFERENCES Bacteria (serial_num)</span></span>
+<span id="cb12-9"><a href="data-set-metrics.html#cb12-9" tabindex="-1"></a><span class="st">  );</span></span>
+<span id="cb12-10"><a href="data-set-metrics.html#cb12-10" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="build-atb-database.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -243,7 +299,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-Database-Creation.Rmd",
 "text": "Edit"
 },
 "history": {

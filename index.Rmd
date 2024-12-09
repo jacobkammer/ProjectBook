@@ -15,12 +15,8 @@ link-citations: yes
 github-repo: rstudio/bookdown-demo
 ---
 
-# Introduction
-
-Antibiotic resistance is increasing world wide in pathogenic microbial populations. Therapeutic and prophylactic use of antibiotics constitutes selective pressure that favors the evolution of antibiotic resistance strains. The durability of a resistance mutation in pathogens is partly determined by it's effect on the fitness of the organism.  Antibiotic resistance mutations usually target key biochemical processes, which impart a fitness cost to the microorganism. The data set used in the evaluation was obtained from the Dryad website. The origin of the data was from the article *The fitness costs of antibiotic resistance mutations* authored by *Melnyk, Wong and Kassen*. 
 
 
-# Build ATB database 
 
 Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
 

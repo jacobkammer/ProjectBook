@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>04-Microbial-Fitness</title>
+  <title>Chapter 13 Mean relative fitness and 95% CI of antibiotic Resistance mutation | 04-Microbial-Fitness</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="04-Microbial-Fitness" />
+  <meta property="og:title" content="Chapter 13 Mean relative fitness and 95% CI of antibiotic Resistance mutation | 04-Microbial-Fitness" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="04-Microbial-Fitness" />
+  <meta name="twitter:title" content="Chapter 13 Mean relative fitness and 95% CI of antibiotic Resistance mutation | 04-Microbial-Fitness" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -36,8 +36,8 @@ set in the _output.yml file.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html"/>
+<link rel="prev" href="the-dihydrofolate-reductase-inhibitors-appear-to-be-either-cost-free-or-the-costs-are-so-small-they-cannot-be-detected-by-the-assay-techniques-used-in-this-study..html"/>
+<link rel="next" href="blocks.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -198,21 +198,100 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">04-Microbial-Fitness</h1>
-<p class="author"><em>kammer</em></p>
-<p class="date"><em>2024-12-08</em></p>
-</div>
-<div id="display-the-distribution-of-numeric-variables" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Display the Distribution of Numeric variables<a href="index.html#display-the-distribution-of-numeric-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Mean relative fitness and 95% CI of antibiotic Resistance mutation<a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html#mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>associated with a specific antibiotic, Fitness cost &lt; 1 indicates less fit and Fitness Cost &gt; 1 associated with more fit.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>The antibiotic Trimethoprim has mean fitness of cost of greater than 1, indicating that the gene mutation that creates resistance to Trimethoprim does not negatively impact microbial fitness. Trimethoprim is a member of the drug class dihydrofolate reductase inhibitors. This finding correlates with the graph of fitness and drug class.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+Resistance mutations in two species, Enterococcus faecium and Borrelia burgorferi, showed no evidence for a fitness cost. Other bacteria species had a fitness cost to Mean relative fitness and 95% CI of antibiotic resistance mutation associated with a given bacteria Fitness cost &lt; 1 indicates less fit.</p>
+<p>#Create a heat map with antibiotic and bacteria as the two categorical variables and fitness as a numeric variable.</p>
+<pre><code>## `summarise()` has grouped output by &#39;bacteria&#39;, &#39;antibioticType&#39;.
+## You can override using the `.groups` argument.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>Analysis of Staph aureus gene mutations
+How many Staph aureus gene mutations associated with fitness is &lt; 1, indicating less fit?</p>
+<pre><code>##    n
+## 1 44</code></pre>
+<p>How many Staph aureus gene mutations associated with fitness is &gt; 1, indicating improved fitness?</p>
+<pre><code>##   n
+## 1 5</code></pre>
+<p>There are 5 gene mutations in Staph aureus associated with improved microbial fitness and 44 gene mutations associated with a decrease in fitness.</p>
+<p>What are the gene mutations associated with a decrease and increase in microbial fitness.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html#cb41-1" tabindex="-1"></a>BacterialessFIT <span class="ot">&lt;-</span> costR <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html#cb41-2" tabindex="-1"></a>  <span class="fu">select</span>(bacteria, gene_mutation, fitness) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-3"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html#cb41-3" tabindex="-1"></a>  <span class="fu">filter</span>(bacteria <span class="sc">==</span> <span class="st">&quot;S. aureus&quot;</span> <span class="sc">&amp;</span> fitness <span class="sc">&lt;</span> <span class="fl">1.0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-4"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html#cb41-4" tabindex="-1"></a>  <span class="fu">distinct</span>(gene_mutation) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-5"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html#cb41-5" tabindex="-1"></a><span class="fu">rename</span>(<span class="st">&quot;Gene Mutation&quot;</span> <span class="ot">=</span> gene_mutation)</span>
+<span id="cb41-6"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html#cb41-6" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html#cb41-7" tabindex="-1"></a>BacterialessFIT</span></code></pre></div>
+<pre><code>##     Gene Mutation
+## 1     rpoB V1080I
+## 2     rpoB V1080L
+## 3     rpoB E1084K
+## 4     rpoB D1101E
+## 5     rpoB S1127L
+## 6     rpoB S1127P
+## 7      rpoC K334N
+## 8      rpoC T925K
+## 9      rpoC T925R
+## 10    rpoC G1172C
+## 11    rpoC G1172D
+## 12      gryB G85S
+## 13     gyrB R144S
+## 14     gyrB T173I
+## 15     DHFR H150R
+## 16      EF-G A67T
+## 17     EF-G P406L
+## 18     EF-G S416F
+## 19     EF-G H457Y
+## 20      grlA S80F
+## 21      grlA S80Y
+## 22     rpoB N471Y
+## 23     rpoB N471Q
+## 24     rpoB N471G
+## 25     rpoB I527F
+## 26     rpoB S464P
+## 27     rpoB N474K
+## 28     rpoB A477V
+## 29     rpoB A477N
+## 30     rpoB R484H
+## 31     rpoB S486L
+## 32     rpoB Q468R
+## 33     rpoB Q468L
+## 34     rpoB H481Y
+## 35     rpoB D471E
+## 36     rpoB Q137L
+## 37     rpoB L466S
+## 38     rpoB H481N
+## 39 rpoB deltaL485
+## 40     rpoB D471Y
+## 41     rpoB L488S
+## 42     rpoB P519L
+## 43     rpoB A477D
+## 44     rpoB H481D</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html#cb43-1" tabindex="-1"></a>BacteriaMoreFit <span class="ot">&lt;-</span> costR <span class="sc">%&gt;%</span> </span>
+<span id="cb43-2"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html#cb43-2" tabindex="-1"></a>  <span class="fu">select</span>(bacteria, gene_mutation, fitness) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-3"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html#cb43-3" tabindex="-1"></a>  <span class="fu">filter</span>(bacteria <span class="sc">==</span> <span class="st">&quot;S. aureus&quot;</span> <span class="sc">&amp;</span> fitness <span class="sc">&gt;</span> <span class="fl">1.0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-4"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html#cb43-4" tabindex="-1"></a>  <span class="fu">distinct</span>(gene_mutation) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-5"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html#cb43-5" tabindex="-1"></a><span class="fu">rename</span>(<span class="st">&quot;Gene Mutation&quot;</span> <span class="ot">=</span> gene_mutation)</span>
+<span id="cb43-6"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html#cb43-6" tabindex="-1"></a>BacteriaMoreFit</span></code></pre></div>
+<pre><code>##   Gene Mutation
+## 1     DHFR L41F
+## 2     DHFR F99S
+## 3     DHFR F99Y
+## 4     grlA E84K
+## 5    grlA A116E</code></pre>
+<p>Three of the five gene mutations that are associated with improved fitness and mutations in the gene that codes for the dihydrofolate reductase inhibitor.</p>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="the-dihydrofolate-reductase-inhibitors-appear-to-be-either-cost-free-or-the-costs-are-so-small-they-cannot-be-detected-by-the-assay-techniques-used-in-this-study..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="blocks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -243,7 +322,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-Microbial-Fitness.Rmd",
 "text": "Edit"
 },
 "history": {

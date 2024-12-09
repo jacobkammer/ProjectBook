@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Populate each table of the ATB.db with the selected data | 04-Microbial-Fitness</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Populate each table of the ATB.db with the selected data | 04-Microbial-Fitness" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Populate each table of the ATB.db with the selected data | 04-Microbial-Fitness" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="kammer" />
+
+
+<meta name="date" content="2024-12-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html"/>
+<link rel="next" href="analysis.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">antibiotic resistance mutations and bacterial fitness</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Display the Distribution of Numeric variables</a></li>
+<li class="chapter" data-level="2" data-path="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html"><a href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html"><i class="fa fa-check"></i><b>2</b> Display the Relationships between numeric Variables using multiple graphing techniques</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html"><a href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html#preview-book"><i class="fa fa-check"></i><b>2.1</b> Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>3</b> Introduction</a></li>
+<li class="chapter" data-level="4" data-path="build-atb-database.html"><a href="build-atb-database.html"><i class="fa fa-check"></i><b>4</b> Build ATB database</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="build-atb-database.html"><a href="build-atb-database.html#build-the-database-with-four-tables-which-will-contain-all-of-the-data-for-the-analysis."><i class="fa fa-check"></i><b>4.1</b> Build the database with four tables, which will contain all of the data for the analysis.</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-set-metrics.html"><a href="data-set-metrics.html"><i class="fa fa-check"></i><b>5</b> Data set Metrics</a></li>
+<li class="chapter" data-level="6" data-path="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html"><i class="fa fa-check"></i><b>6</b> Extract and select the data from the spreadsheet that will be entered into each table.</a></li>
+<li class="chapter" data-level="7" data-path="populate-each-table-of-the-atb.db-with-the-selected-data.html"><a href="populate-each-table-of-the-atb.db-with-the-selected-data.html"><i class="fa fa-check"></i><b>7</b> Populate each table of the ATB.db with the selected data</a></li>
+<li class="chapter" data-level="8" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>8</b> Analysis</a></li>
+<li class="chapter" data-level="9" data-path="create-ranges-of-fitness-value-and-assign-to-general-categories.-encode-the-results-in-a-table-using-the-gt-package..html"><a href="create-ranges-of-fitness-value-and-assign-to-general-categories.-encode-the-results-in-a-table-using-the-gt-package..html"><i class="fa fa-check"></i><b>9</b> Create ranges of fitness value and assign to general categories. Encode the results in a table using the ‘gt()’ package.</a></li>
+<li class="chapter" data-level="10" data-path="analysis-of-staphycococcal-aureus..html"><a href="analysis-of-staphycococcal-aureus..html"><i class="fa fa-check"></i><b>10</b> Analysis of Staphycococcal aureus.</a></li>
+<li class="chapter" data-level="11" data-path="effect-of-antibiotic-class-on-fitness.html"><a href="effect-of-antibiotic-class-on-fitness.html"><i class="fa fa-check"></i><b>11</b> Effect of antibiotic class on fitness</a></li>
+<li class="chapter" data-level="12" data-path="the-dihydrofolate-reductase-inhibitors-appear-to-be-either-cost-free-or-the-costs-are-so-small-they-cannot-be-detected-by-the-assay-techniques-used-in-this-study..html"><a href="the-dihydrofolate-reductase-inhibitors-appear-to-be-either-cost-free-or-the-costs-are-so-small-they-cannot-be-detected-by-the-assay-techniques-used-in-this-study..html"><i class="fa fa-check"></i><b>12</b> The dihydrofolate reductase inhibitors appear to be either cost-free or the costs are so small they cannot be detected by the assay techniques used in this study.</a></li>
+<li class="chapter" data-level="13" data-path="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html"><i class="fa fa-check"></i><b>13</b> Mean relative fitness and 95% CI of antibiotic Resistance mutation</a></li>
+<li class="chapter" data-level="14" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>14</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>14.1</b> Equations</a></li>
+<li class="chapter" data-level="14.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>14.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="14.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>14.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>15</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>15.1</b> Publishing</a></li>
+<li class="chapter" data-level="15.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>15.2</b> 404 pages</a></li>
+<li class="chapter" data-level="15.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>15.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">04-Microbial-Fitness</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="populate-each-table-of-the-atb.db-with-the-selected-data" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Populate each table of the ATB.db with the selected data<a href="populate-each-table-of-the-atb.db-with-the-selected-data.html#populate-each-table-of-the-atb.db-with-the-selected-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="populate-each-table-of-the-atb.db-with-the-selected-data.html#cb18-1" tabindex="-1"></a><span class="fu">dbWriteTable</span>(antibiotic_db, <span class="st">&quot;Antibiotic_Table&quot;</span>, atbdf, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-2"><a href="populate-each-table-of-the-atb.db-with-the-selected-data.html#cb18-2" tabindex="-1"></a><span class="fu">dbWriteTable</span>(antibiotic_db, <span class="st">&quot;Bacteria&quot;</span>, distinctBac, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-3"><a href="populate-each-table-of-the-atb.db-with-the-selected-data.html#cb18-3" tabindex="-1"></a><span class="fu">dbWriteTable</span>(antibiotic_db, <span class="st">&quot;microbial_fitness&quot;</span>, FIT, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)  </span>
+<span id="cb18-4"><a href="populate-each-table-of-the-atb.db-with-the-selected-data.html#cb18-4" tabindex="-1"></a><span class="fu">dbWriteTable</span>(antibiotic_db, <span class="st">&quot;Laboratory_standard&quot;</span>, REF, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-5"><a href="populate-each-table-of-the-atb.db-with-the-selected-data.html#cb18-5" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="populate-each-table-of-the-atb.db-with-the-selected-data.html#cb18-6" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="populate-each-table-of-the-atb.db-with-the-selected-data.html#cb18-7" tabindex="-1"></a><span class="fu">dbListFields</span>(antibiotic_db, <span class="st">&quot;Antibiotic_Table&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;antibioticType&quot;  &quot;antibioticClass&quot;</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="populate-each-table-of-the-atb.db-with-the-selected-data.html#cb20-1" tabindex="-1"></a><span class="fu">dbListFields</span>(antibiotic_db, <span class="st">&quot;Bacteria&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;bacteria&quot;      &quot;gram_stain&quot;    &quot;gene_target&quot;   &quot;gene_mutation&quot;</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="populate-each-table-of-the-atb.db-with-the-selected-data.html#cb22-1" tabindex="-1"></a><span class="fu">dbReadTable</span>(antibiotic_db, <span class="st">&quot;microbial_fitness&quot;</span>)</span></code></pre></div>
+<pre><code>##              MIC Selection_coefficient   fitness          SE   gene_mutation
+## 1   2.000000e+01          -0.115415603 0.8640000 0.034000000     rpoB V1080I
+## 2   2.000000e+01          -0.173123405 0.7960000 0.051000000     rpoB V1080L
+## 3   1.000000e+02          -0.115415603 0.8640000 0.068000000     rpoB E1084K
+## 4   2.000000e+01          -0.216404256 0.7450000 0.017000000     rpoB D1101E
+## 5   1.000000e+02          -0.144269504 0.8300000 0.051000000     rpoB S1127L
+## 6   1.000000e+02          -0.057707802 0.9320000 0.034000000     rpoB S1127P
+## 7   1.000000e+02          -0.086561702 0.8980000 0.034000000      rpoC K334N
+## 8   2.000000e+01          -0.100988653 0.8810000 0.017000000      rpoC T925K
+## 9   1.000000e+02          -0.072134752 0.9150000 0.034000000      rpoC T925R
+## 10  2.000000e+01          -0.187550355 0.7790000 0.017000000     rpoC G1172C
+## 11  2.000000e+01          -0.201977306 0.7620000 0.017000000     rpoC G1172D
+## 12            NA          -0.005000000 0.9950000 0.007000000       rpsL K43R
+## 13            NA          -0.134000000 0.8660000 0.010000000       rpsL K43T
+## 14            NA          -0.275000000 0.7250000 0.014000000       rpsL K88E
+## 15            NA          -0.180000000 0.8200000 0.009500000       rpsL K43N
+## 16            NA          -0.061000000 0.9390000 0.006000000       rpsL K88R
+## 17  2.500000e+02          -0.134891986 0.8410500 0.022984694  16S rRNA C522T
+## 18  1.250000e+02          -0.088725745 0.8954500 0.027321429  16S rRNA A523C
+## 19  5.000000e+02          -0.566257804 0.3327500 0.140943878  16S rRNA G524C
+## 20  1.250000e+02          -0.201255958 0.7628500 0.077627551 16S rRNA C526T 
+## 21  8.333330e+02          -0.023804468 0.9719500 0.049872449 16S rRNA A1408G
+## 22  1.250000e+02          -0.078626880 0.9073500 0.027321429  16S rRNA A523C
+## 23  5.000000e+02          -0.600161137 0.2928000 0.060714286  16S rRNA G524C
+## 24  1.250000e+02          -0.113972908 0.8657000 0.016479592  16S rRNA C526T
+## 25  8.333330e+02          -0.042559504 0.9498500 0.040331633 16S rRNA A1408G
+## 26            NA          -0.136000000 0.8640000 0.005700000       rpsL K42T
+## 27            NA          -0.188000000 0.8120000 0.007900000       rpsL K42N
+## 28            NA          -0.025726084 0.9696857 0.059109604     rpsE C1186U
+## 29            NA          -0.025726084 0.9696857 0.042097489     rpsE A1185G
+## 30  6.250000e+01          -0.040000000 0.9600000 0.023094011       gryB G85S
+## 31  6.250000e+01          -0.050000000 0.9500000 0.023094011      gyrB R144S
+## 32  6.250000e+01          -0.040000000 0.9600000 0.023094011      gyrB T173I
+## 33  4.000000e+00           0.028853901 1.0340000 0.029444864       DHFR L41F
+## 34  4.000000e+00           0.043280851 1.0510000 0.009814955       DHFR F99S
+## 35  8.000000e+00          -0.014426950 0.9830000 0.019629909      DHFR H150R
+## 36  1.600000e+01           0.014426950 1.0170000 0.029444864       DHFR F99Y
+## 37  1.000000e+00          -0.031739651 0.9625996 0.008198849       EF-G A67T
+## 38  2.500000e+02          -0.443538564 0.4773562 0.008812137      EF-G P406L
+## 39  1.000000e+00          -0.047361381 0.9441917 0.014676990      EF-G S416F
+## 40  2.000000e+03          -0.308353681 0.6366514 0.031225255      EF-G H457Y
+## 41  2.133333e+03          -0.028853901 0.9660000 0.039897959 23S rRNA A2058G
+## 42  2.133333e+03          -0.028132553 0.9668500 0.065484694 23S rRNA A2059G
+## 43            NA          -0.043280851 0.9490000 0.112755102      23S A2074C
+## 44            NA          -0.014426950 0.9830000 0.086734694      23S A2074C
+## 45            NA          -0.043280851 0.9490000 0.034693878      23S A2074C
+## 46            NA          -0.028853901 0.9660000 0.026020408      23S A2074C
+## 47            NA          -0.043280851 0.9490000 0.043367347      23S A2074C
+## 48  5.120000e+02          -0.170000000 0.8300000 0.040000000      23S A2074C
+## 49  2.560000e+02          -0.180000000 0.8200000 0.048469388      23S A2075G
+## 50  2.560000e+02          -0.200000000 0.8000000 0.053571429      23S A2075G
+## 51  2.560000e+02          -0.160000000 0.8400000 0.035714286      23S A2075G
+## 52  2.560000e+02          -0.155000000 0.8450000 0.025510204      23S A2075G
+## 53  8.000000e+00          -0.020000000 0.9800000 0.028867513       grlA S80F
+## 54  8.000000e+00          -0.040000000 0.9600000 0.017320508       grlA S80Y
+## 55  8.000000e+00           0.020000000 1.0200000 0.028867513       grlA E84K
+## 56  8.000000e+00           0.020000000 1.0200000 0.023094011      grlA A116E
+## 57  2.000000e+00          -0.083000000 0.9170000 0.034900000       parC S79F
+## 58  2.000000e+00           0.004000000 1.0040000 0.025600000       parC S79Y
+## 59  3.000000e+00           0.070000000 1.0700000 0.019000000       parC D83Y
+## 60  2.000000e+00          -0.439000000 0.5610000 0.072400000      parE D435N
+## 61  2.000000e+00           0.010000000 1.0100000 0.028100000       gyrA S81Y
+## 62  1.000000e+00          -0.076000000 0.9240000 0.039400000       gyrA E85K
+## 63  1.000000e+00          -0.099000000 0.9010000 0.043100000       gyrA S81F
+## 64  2.659574e+00           0.001442695 1.0017000 0.023800000       gyrA S83A
+## 65  5.319149e+00          -0.007213475 0.9915000 0.023800000       gyrA D87Y
+## 66  1.063830e+01          -0.001442695 0.9983000 0.023800000       gyrA D87G
+## 67  5.319149e+00           0.033181986 1.0391000 0.023800000      gyrB S464F
+## 68  2.659574e+00           0.012984255 1.0153000 0.023800000   gyrB delta9nt
+## 69  5.319149e+00          -0.018755036 0.9779000 0.023800000       marR R77L
+## 70  4.042553e+00          -0.004328085 0.9949000 0.023800000       marR R94H
+## 71  2.021277e+00           0.004328085 1.0051000 0.023800000 marR delta13 nt
+## 72            NA          -0.037000000 0.9630000 0.007500000       gyrA D87G
+## 73            NA          -0.033000000 0.9670000 0.006000000       gyrA S83L
+## 74            NA          -0.031000000 0.9690000 0.009500000       gyrA D87Y
+## 75  2.375000e+01           0.010000000 1.0100000 0.012247449       gyrA S83L
+## 76  1.562500e+01          -0.010000000 0.9900000 0.011338934       gyrA D87N
+## 77  1.000000e+00          -0.010000000 0.9900000 0.004472136       parC S80I
+## 78  2.000000e+00          -0.170000000 0.8300000 0.013416408      marR delta
+## 79  2.937500e+00          -0.090000000 0.9100000 0.008944272      acrR delta
+## 80            NA          -0.240000000 0.7600000 0.025000000       gyrA E85K
+## 81            NA          -0.060000000 0.9400000 0.015000000       parC S79F
+## 82            NA          -0.030000000 0.9700000 0.005000000       parC S79Y
+## 83            NA          -0.050000000 0.9500000 0.015000000       parC D83N
+## 84            NA          -0.080000000 0.9200000 0.010000000       parC D83Y
+## 85  8.000000e+00          -0.150000000 1.1500000 0.102040800       parC S79Y
+## 86  3.200000e+02           0.354902980 1.4182000 0.019720000      rpoB I572F
+## 87  4.000000e+01           0.304408654 1.3587000 0.030260000      rpoB I572L
+## 88  1.000000e+01           0.262570497 1.3094000 0.033660000      rpoB 1572N
+## 89  3.200000e+02           0.409725392 1.4828000 0.060690000      rpoB I572F
+## 90  4.000000e+01           0.435693902 1.5134000 0.061370000      rpoB I572L
+## 91  1.000000e+01           0.428480427 1.5049000 0.064260000      rpoB 1572N
+## 92  3.200000e+02          -0.132150866 0.8442800 0.030260000      rpoB I572F
+## 93  4.000000e+01          -0.038952766 0.9541000 0.012988000      rpoB I572L
+## 94            NA          -0.129842554 0.8470000 0.052040816      rpoB S531L
+## 95            NA          -0.259685107 0.6940000 0.060714286      rpoB H526Y
+## 96            NA          -0.317392909 0.6260000 0.034693878      rpoB H526D
+## 97            NA          -0.173123405 0.7960000 0.095408163      rpoB S531W
+## 98            NA          -0.259685107 0.6940000 0.052040816      rpoB H526R
+## 99            NA          -0.173123405 0.7960000 0.069387755      rpoB S522L
+## 100           NA          -0.245258157 0.7110000 0.026020408      rpoB Q513L
+## 101           NA          -0.230831207 0.7280000 0.043367347      rpoB H526P
+## 102           NA          -0.605931917 0.2860000 0.026020408      rpoB R529Q
+## 103 3.200000e+01          -0.016000000 0.9840000 0.009389711      rpoB H489Q
+## 104 6.400000e+01           0.220000000 1.2200000 0.007756718      rpoB H489Y
+## 105 2.560000e+02          -0.095000000 0.9050000 0.004898979      rpoB R492H
+## 106 6.400000e+01          -0.027000000 0.9730000 0.004082483      rpoB H489Y
+## 107 2.560000e+02          -0.095000000 0.9050000 0.001224745      rpoB R492H
+## 108 9.600000e+01          -0.042000000 0.9580000 0.008573214      rpoB H489Y
+## 109 3.200000e+01          -0.026000000 0.9740000 0.003674235      rpoB H489Y
+## 110 3.200000e+01          -0.032000000 0.9680000 0.003674235      rpoB H489Y
+## 111 6.400000e+01          -0.029000000 0.9710000 0.001632993      rpoB Q480H
+## 112 1.280000e+02          -0.290000000 0.7100000 0.090000000     rpoB S531W 
+## 113 1.280000e+02          -0.140000000 0.8600000 0.030000000      rpoB H526Y
+## 114 6.400000e+01          -0.050000000 0.9500000 0.020000000      rpoB S522L
+## 115           NA          -0.060000000 0.9400000 0.005000000      rpoB D516V
+## 116           NA          -0.014000000 0.9860000 0.005500000      rpoB H526N
+## 117           NA          -0.004000000 0.9960000 0.007500000      rpoB H526L
+## 118           NA          -0.103000000 0.8970000 0.016000000      rpoB H526Y
+## 119           NA          -0.146000000 0.8540000 0.006000000      rpoB I572F
+## 120           NA          -0.064000000 0.9360000 0.020000000      rpoB D516Y
+## 121           NA          -0.041000000 0.9590000 0.010000000      rpoB D516N
+## 122           NA          -0.262000000 0.7380000 0.024500000      rpoB R529H
+## 123           NA          -0.065000000 0.9350000 0.006500000      rpoB S512F
+## 124           NA          -0.107000000 0.8930000 0.007500000      rpoB S531F
+## 125           NA          -0.096000000 0.9040000 0.006000000      rpoB H526D
+## 126 1.600000e+01          -0.136000000 0.8640000 0.014000000      rpoB I572L
+## 127 4.000000e+00          -0.135000000 0.8650000 0.018000000      rpoB L511Q
+## 128 1.600000e+01          -0.056000000 0.9440000 0.015000000      rpoB H526L
+## 129 1.600000e+01           0.046000000 1.0460000 0.014000000            &lt;NA&gt;
+## 130 3.200000e+01          -0.037000000 0.9630000 0.009000000      rpoB Q148L
+## 131 3.200000e+01          -0.087000000 0.9130000 0.010000000      rpoB H526Y
+## 132 8.000000e+00          -0.104000000 0.8960000 0.021000000      rpoB Q418L
+## 133 3.200000e+02          -0.165000000 0.8350000 0.019000000      rpoB P564L
+## 134 1.600000e+01           0.030000000 1.0300000 0.002000000      rpoB D516G
+## 135 5.000000e+02           0.000000000 1.0000000 0.004000000      rpoB H481N
+## 136 5.000000e+02          -0.120000000 0.8800000 0.012000000      rpoB N471Y
+## 137 6.250000e+01          -0.040000000 0.9600000 0.008000000      rpoB N471Q
+## 138 6.250000e+01          -0.130000000 0.8700000 0.022000000      rpoB N471G
+## 139 5.000000e+02          -0.070000000 0.9300000 0.016000000      rpoB I527F
+## 140 5.000000e+02          -0.070000000 0.9300000 0.008000000      rpoB S464P
+## 141 1.000000e+03          -0.400000000 0.6000000 0.040000000      rpoB N474K
+## 142 1.250000e+02          -0.120000000 0.8800000 0.023000000      rpoB A477V
+## 143 3.200000e+04          -0.090000000 0.9100000 0.013000000      rpoB A477N
+## 144 3.200000e+04          -0.250000000 0.7500000 0.019000000      rpoB R484H
+## 145 6.400000e+04          -0.140000000 0.8600000 0.011000000      rpoB S486L
+## 146 6.400000e+04          -0.200000000 0.8000000 0.007000000      rpoB Q468R
+## 147 6.400000e+04          -0.050000000 0.9500000 0.016000000      rpoB Q468L
+## 148 6.400000e+04          -0.070000000 0.9300000 0.011000000      rpoB H481Y
+## 149 1.562500e+01          -0.086561702 0.8980000 0.049074773      rpoB D471E
+## 150 1.562500e+01          -0.187550355 0.7790000 0.029444864      rpoB Q137L
+## 151 3.125000e+01          -0.216404256 0.7450000 0.039259818      rpoB Q137L
+## 152 3.125000e+01          -0.057707802 0.9320000 0.039259818      rpoB L466S
+## 153 3.125000e+01          -0.302965959 0.6430000 0.049074773      rpoB D471E
+## 154 3.125000e+01          -0.245258157 0.7110000 0.049074773      rpoB Q137L
+## 155 2.500000e+02          -0.288539008 0.6600000 0.009814955      rpoB H481N
+## 156 2.500000e+02          -0.605931917 0.2860000 0.029444864      rpoB A477V
+## 157 5.000000e+02          -0.274112058 0.6770000 0.029444864  rpoB deltaL485
+## 158 5.000000e+02          -0.230831207 0.7280000 0.039259818      rpoB D471Y
+## 159 1.000000e+03          -0.375100711 0.5580000 0.039259818      rpoB D471Y
+## 160 2.000000e+03          -0.014426950 0.9830000 0.019629909      rpoB I527F
+## 161 2.000000e+03          -0.418381562 0.5070000 0.029444864      rpoB S464P
+## 162 1.600000e+04          -0.014426950 0.9830000 0.049074773      rpoB L488S
+## 163 3.200000e+04          -0.317392909 0.6260000 0.029444864      rpoB P519L
+## 164 6.400000e+04          -0.562651066 0.3370000 0.029444864      rpoB A477D
+## 165 1.280000e+05          -0.519370215 0.3880000 0.029444864      rpoB S486L
+## 166 1.280000e+05          -0.360673760 0.5750000 0.049074773      rpoB S486L
+## 167 1.280000e+05          -0.591504967 0.3030000 0.019629909      rpoB H481D
+## 168 1.280000e+05          -0.721347520 0.1500000 0.019629909      rpoB H481Y
+## 169 1.280000e+05          -0.735774471 0.1330000 0.029444864      rpoB H481Y
+## 170           NA           0.000000000 1.0000000 0.001154701      rpoB S531L
+## 171           NA          -0.010000000 1.0100000 0.040991869      rpoB H526Y
+## 172           NA           0.020000000 0.9800000 0.030022214      rpoB S531W
+## 173           NA           0.050000000 0.9500000 0.021361960      rpoB H526R
+## 174           NA           0.080000000 0.9200000 0.008082904      rpoB H526P
+## 175           NA          -0.040000000 1.0400000 0.027135463       gyrA D94G
+## 176           NA          -0.010000000 1.0100000 0.002309401       gyrA D94Y
+## 177           NA           0.050000000 0.9500000 0.006350853       gyrA D94N
+## 178           NA           0.200000000 0.8000000 0.029444864       gyrA G88C
+##     antibioticType
+## 1      myxopyronin
+## 2      myxopyronin
+## 3      myxopyronin
+## 4      myxopyronin
+## 5      myxopyronin
+## 6      myxopyronin
+## 7      myxopyronin
+## 8      myxopyronin
+## 9      myxopyronin
+## 10     myxopyronin
+## 11     myxopyronin
+## 12    streptomycin
+## 13    streptomycin
+## 14    streptomycin
+## 15    streptomycin
+## 16    streptomycin
+## 17    streptomycin
+## 18    streptomycin
+## 19    streptomycin
+## 20    streptomycin
+## 21        amikacin
+## 22    streptomycin
+## 23    streptomycin
+## 24    streptomycin
+## 25        amikacin
+## 26    streptomycin
+## 27    streptomycin
+## 28   spectinomycin
+## 29   spectinomycin
+## 30      novobiocin
+## 31      novobiocin
+## 32     coumermycin
+## 33    trimethoprim
+## 34    trimethoprim
+## 35    trimethoprim
+## 36    trimethoprim
+## 37    fusidic acid
+## 38    fusidic acid
+## 39    fusidic acid
+## 40    fusidic acid
+## 41  clarithromycin
+## 42  clarithromycin
+## 43         tylosin
+## 44         tylosin
+## 45         tylosin
+## 46         tylosin
+## 47         tylosin
+## 48    erythromycin
+## 49    erythromycin
+## 50    erythromycin
+## 51    erythromycin
+## 52    erythromycin
+## 53     norfloxacin
+## 54     norfloxacin
+## 55     norfloxacin
+## 56     norfloxacin
+## 57   ciprofloxacin
+## 58   ciprofloxacin
+## 59   ciprofloxacin
+## 60   ciprofloxacin
+## 61   ciprofloxacin
+## 62   ciprofloxacin
+## 63   ciprofloxacin
+## 64     norfloxacin
+## 65     norfloxacin
+## 66     norfloxacin
+## 67     norfloxacin
+## 68     norfloxacin
+## 69     norfloxacin
+## 70     norfloxacin
+## 71     norfloxacin
+## 72  nalidixic acid
+## 73  nalidixic acid
+## 74  nalidixic acid
+## 75   ciprofloxacin
+## 76   ciprofloxacin
+## 77   ciprofloxacin
+## 78   ciprofloxacin
+## 79   ciprofloxacin
+## 80   ciprofloxacin
+## 81   ciprofloxacin
+## 82   ciprofloxacin
+## 83   ciprofloxacin
+## 84   ciprofloxacin
+## 85   ciprofloxacin
+## 86      rifampicin
+## 87      rifampicin
+## 88      rifampicin
+## 89      rifampicin
+## 90      rifampicin
+## 91      rifampicin
+## 92      rifampicin
+## 93      rifampicin
+## 94      rifampicin
+## 95      rifampicin
+## 96      rifampicin
+## 97      rifampicin
+## 98      rifampicin
+## 99      rifampicin
+## 100     rifampicin
+## 101     rifampicin
+## 102     rifampicin
+## 103     rifampicin
+## 104     rifampicin
+## 105     rifampicin
+## 106     rifampicin
+## 107     rifampicin
+## 108     rifampicin
+## 109     rifampicin
+## 110     rifampicin
+## 111     rifampicin
+## 112     rifampicin
+## 113     rifampicin
+## 114     rifampicin
+## 115     rifampicin
+## 116     rifampicin
+## 117     rifampicin
+## 118     rifampicin
+## 119     rifampicin
+## 120     rifampicin
+## 121     rifampicin
+## 122     rifampicin
+## 123     rifampicin
+## 124     rifampicin
+## 125     rifampicin
+## 126     rifampicin
+## 127     rifampicin
+## 128     rifampicin
+## 129     rifampicin
+## 130     rifampicin
+## 131     rifampicin
+## 132     rifampicin
+## 133     rifampicin
+## 134     rifampicin
+## 135     rifampicin
+## 136     rifampicin
+## 137     rifampicin
+## 138     rifampicin
+## 139     rifampicin
+## 140     rifampicin
+## 141     rifampicin
+## 142     rifampicin
+## 143     rifampicin
+## 144     rifampicin
+## 145     rifampicin
+## 146     rifampicin
+## 147     rifampicin
+## 148     rifampicin
+## 149     rifampicin
+## 150     rifampicin
+## 151     rifampicin
+## 152     rifampicin
+## 153     rifampicin
+## 154     rifampicin
+## 155     rifampicin
+## 156     rifampicin
+## 157     rifampicin
+## 158     rifampicin
+## 159     rifampicin
+## 160     rifampicin
+## 161     rifampicin
+## 162     rifampicin
+## 163     rifampicin
+## 164     rifampicin
+## 165     rifampicin
+## 166     rifampicin
+## 167     rifampicin
+## 168     rifampicin
+## 169     rifampicin
+## 170     rifampicin
+## 171     rifampicin
+## 172     rifampicin
+## 173     rifampicin
+## 174     rifampicin
+## 175     olfloxacin
+## 176     olfloxacin
+## 177     olfloxacin
+## 178     olfloxacin</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="populate-each-table-of-the-atb.db-with-the-selected-data.html#cb24-1" tabindex="-1"></a><span class="fu">dbReadTable</span>(antibiotic_db, <span class="st">&quot;Bacteria&quot;</span>)</span></code></pre></div>
+<pre><code>##            bacteria gram_stain
+## 1         S. aureus   positive
+## 2         S. aureus   positive
+## 3         S. aureus   positive
+## 4         S. aureus   positive
+## 5         S. aureus   positive
+## 6         S. aureus   positive
+## 7         S. aureus   positive
+## 8         S. aureus   positive
+## 9         S. aureus   positive
+## 10        S. aureus   positive
+## 11        S. aureus   positive
+## 12          E. coli   negative
+## 13          E. coli   negative
+## 14          E. coli   negative
+## 15          E. coli   negative
+## 16          E. coli   negative
+## 17     M. smegmatis   positive
+## 18     M. smegmatis   positive
+## 19     M. smegmatis   positive
+## 20     M. smegmatis   positive
+## 21     M. smegmatis   positive
+## 22     M. smegmatis   positive
+## 23          E. coli   negative
+## 24          E. coli   negative
+## 25   B. burgdorferi   negative
+## 26   B. burgdorferi   negative
+## 27        S. aureus   positive
+## 28        S. aureus   positive
+## 29        S. aureus   positive
+## 30        S. aureus   positive
+## 31        S. aureus   positive
+## 32        S. aureus   positive
+## 33        S. aureus   positive
+## 34        S. aureus   positive
+## 35        S. aureus   positive
+## 36        S. aureus   positive
+## 37        S. aureus   positive
+## 38     M. smegmatis   positive
+## 39     M. smegmatis   positive
+## 40        C. jejuni   negative
+## 41        C. jejuni   negative
+## 42        S. aureus   positive
+## 43        S. aureus   positive
+## 44        S. aureus   positive
+## 45        S. aureus   positive
+## 46    S. pneumoniae   positive
+## 47    S. pneumoniae   positive
+## 48    S. pneumoniae   positive
+## 49    S. pneumoniae   positive
+## 50    S. pneumoniae   positive
+## 51    S. pneumoniae   positive
+## 52    S. pneumoniae   positive
+## 53          E. coli   negative
+## 54          E. coli   negative
+## 55          E. coli   negative
+## 56          E. coli   negative
+## 57          E. coli   negative
+## 58          E. coli   negative
+## 59          E. coli   negative
+## 60          E. coli   negative
+## 61          E. coli   negative
+## 62          E. coli   negative
+## 63          E. coli   negative
+## 64          E. coli   negative
+## 65          E. coli   negative
+## 66          E. coli   negative
+## 67          E. coli   negative
+## 68          E. coli   negative
+## 69    S. pneumoniae   positive
+## 70    S. pneumoniae   positive
+## 71    S. pneumoniae   positive
+## 72    S. pneumoniae   positive
+## 73    S. pneumoniae   positive
+## 74          E. coli   negative
+## 75          E. coli   negative
+## 76          E. coli   negative
+## 77  M. tuberculosis   positive
+## 78  M. tuberculosis   positive
+## 79  M. tuberculosis   positive
+## 80  M. tuberculosis   positive
+## 81  M. tuberculosis   positive
+## 82  M. tuberculosis   positive
+## 83  M. tuberculosis   positive
+## 84  M. tuberculosis   positive
+## 85  M. tuberculosis   positive
+## 86       E. faecium   positive
+## 87       E. faecium   positive
+## 88       E. faecium   positive
+## 89       E. faecium   positive
+## 90  M. tuberculosis   positive
+## 91          E. coli   negative
+## 92          E. coli   negative
+## 93          E. coli   negative
+## 94          E. coli   negative
+## 95          E. coli   negative
+## 96          E. coli   negative
+## 97          E. coli   negative
+## 98          E. coli   negative
+## 99          E. coli   negative
+## 100         E. coli   negative
+## 101         E. coli   negative
+## 102         E. coli   negative
+## 103         E. coli   negative
+## 104         E. coli   negative
+## 105         E. coli   negative
+## 106         E. coli   negative
+## 107       S. aureus   positive
+## 108       S. aureus   positive
+## 109       S. aureus   positive
+## 110       S. aureus   positive
+## 111       S. aureus   positive
+## 112       S. aureus   positive
+## 113       S. aureus   positive
+## 114       S. aureus   positive
+## 115       S. aureus   positive
+## 116       S. aureus   positive
+## 117       S. aureus   positive
+## 118       S. aureus   positive
+## 119       S. aureus   positive
+## 120       S. aureus   positive
+## 121       S. aureus   positive
+## 122       S. aureus   positive
+## 123       S. aureus   positive
+## 124       S. aureus   positive
+## 125       S. aureus   positive
+## 126       S. aureus   positive
+## 127       S. aureus   positive
+## 128       S. aureus   positive
+## 129       S. aureus   positive
+## 130    M. smegmatis   positive
+## 131    M. smegmatis   positive
+## 132    M. smegmatis   positive
+## 133    M. smegmatis   positive
+## 134    M. smegmatis   positive
+## 135    M. smegmatis   positive
+## 136    M. smegmatis   positive
+## 137    M. smegmatis   positive
+## 138    M. smegmatis   positive
+##                                                                 gene_target
+## 1                                                                rpoB, rpoC
+## 2                                                                rpoB, rpoC
+## 3                                                                rpoB, rpoC
+## 4                                                                rpoB, rpoC
+## 5                                                                rpoB, rpoC
+## 6                                                                rpoB, rpoC
+## 7                                                                rpoB, rpoC
+## 8                                                                rpoB, rpoC
+## 9                                                                rpoB, rpoC
+## 10                                                               rpoB, rpoC
+## 11                                                               rpoB, rpoC
+## 12                                                                   16sRNA
+## 13                                                                   16sRNA
+## 14                                                                   16sRNA
+## 15                                                                   16sRNA
+## 16                                                                   16sRNA
+## 17                                                                   16sRNA
+## 18                                                                   16sRNA
+## 19                                                                   16sRNA
+## 20                                                                   16sRNA
+## 21                                                                  30SrRNA
+## 22                                                                   16sRNA
+## 23                                                                   16sRNA
+## 24                                                                   16sRNA
+## 25                                                                      16S
+## 26                                                                      16S
+## 27                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 28                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 29                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 30                                           Dihydrofolate reductase (DHFR)
+## 31                                           Dihydrofolate reductase (DHFR)
+## 32                                           Dihydrofolate reductase (DHFR)
+## 33                                           Dihydrofolate reductase (DHFR)
+## 34                                                           EF-G, ribosome
+## 35                                                           EF-G, ribosome
+## 36                                                           EF-G, ribosome
+## 37                                                           EF-G, ribosome
+## 38                                                                 23S rRNA
+## 39                                                                 23S rRNA
+## 40                                                                 23S rRNA
+## 41                                                                 23S rRNA
+## 42                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 43                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 44                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 45                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 46  quinolone-resistance determining region (QRDR) topoIV genes and DNA gyr
+## 47  quinolone-resistance determining region (QRDR) topoIV genes and DNA gyr
+## 48  quinolone-resistance determining region (QRDR) topoIV genes and DNA gyr
+## 49  quinolone-resistance determining region (QRDR) topoIV genes and DNA gyr
+## 50  quinolone-resistance determining region (QRDR) topoIV genes and DNA gyr
+## 51  quinolone-resistance determining region (QRDR) topoIV genes and DNA gyr
+## 52  quinolone-resistance determining region (QRDR) topoIV genes and DNA gyr
+## 53                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 54                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 55                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 56                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 57                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 58                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 59                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 60                   type II topoisomerase enzymes (DNA gyrase and topo IV)
+## 61                                                               DNA gyrase
+## 62                                                               DNA gyrase
+## 63                                                               DNA gyrase
+## 64                                                          topoIV, DNA gyr
+## 65                                                          topoIV, DNA gyr
+## 66                                                          topoIV, DNA gyr
+## 67                                                          topoIV, DNA gyr
+## 68                                                          topoIV, DNA gyr
+## 69                                                          topoIV, DNA gyr
+## 70                                                          topoIV, DNA gyr
+## 71                                                          topoIV, DNA gyr
+## 72                                                          topoIV, DNA gyr
+## 73                                                          topoIV, DNA gyr
+## 74                                           rpoB (beta-subunit of RNA pol)
+## 75                                           rpoB (beta-subunit of RNA pol)
+## 76                                           rpoB (beta-subunit of RNA pol)
+## 77                                           rpoB (beta-subunit of RNA pol)
+## 78                                           rpoB (beta-subunit of RNA pol)
+## 79                                           rpoB (beta-subunit of RNA pol)
+## 80                                           rpoB (beta-subunit of RNA pol)
+## 81                                           rpoB (beta-subunit of RNA pol)
+## 82                                           rpoB (beta-subunit of RNA pol)
+## 83                                           rpoB (beta-subunit of RNA pol)
+## 84                                           rpoB (beta-subunit of RNA pol)
+## 85                                           rpoB (beta-subunit of RNA pol)
+## 86                                           rpoB (beta-subunit of RNA pol)
+## 87                                           rpoB (beta-subunit of RNA pol)
+## 88                                           rpoB (beta-subunit of RNA pol)
+## 89                                           rpoB (beta-subunit of RNA pol)
+## 90                                           rpoB (beta-subunit of RNA pol)
+## 91                                           rpoB (beta-subunit of RNA pol)
+## 92                                           rpoB (beta-subunit of RNA pol)
+## 93                                           rpoB (beta-subunit of RNA pol)
+## 94                                           rpoB (beta-subunit of RNA pol)
+## 95                                           rpoB (beta-subunit of RNA pol)
+## 96                                           rpoB (beta-subunit of RNA pol)
+## 97                                           rpoB (beta-subunit of RNA pol)
+## 98                                           rpoB (beta-subunit of RNA pol)
+## 99                                           rpoB (beta-subunit of RNA pol)
+## 100                                          rpoB (beta-subunit of RNA pol)
+## 101                                          rpoB (beta-subunit of RNA pol)
+## 102                                          rpoB (beta-subunit of RNA pol)
+## 103                                          rpoB (beta-subunit of RNA pol)
+## 104                                          rpoB (beta-subunit of RNA pol)
+## 105                                          rpoB (beta-subunit of RNA pol)
+## 106                                          rpoB (beta-subunit of RNA pol)
+## 107                                          rpoB (beta-subunit of RNA pol)
+## 108                                          rpoB (beta-subunit of RNA pol)
+## 109                                          rpoB (beta-subunit of RNA pol)
+## 110                                          rpoB (beta-subunit of RNA pol)
+## 111                                          rpoB (beta-subunit of RNA pol)
+## 112                                          rpoB (beta-subunit of RNA pol)
+## 113                                          rpoB (beta-subunit of RNA pol)
+## 114                                          rpoB (beta-subunit of RNA pol)
+## 115                                          rpoB (beta-subunit of RNA pol)
+## 116                                          rpoB (beta-subunit of RNA pol)
+## 117                                          rpoB (beta-subunit of RNA pol)
+## 118                                          rpoB (beta-subunit of RNA pol)
+## 119                                          rpoB (beta-subunit of RNA pol)
+## 120                                          rpoB (beta-subunit of RNA pol)
+## 121                                          rpoB (beta-subunit of RNA pol)
+## 122                                          rpoB (beta-subunit of RNA pol)
+## 123                                          rpoB (beta-subunit of RNA pol)
+## 124                                          rpoB (beta-subunit of RNA pol)
+## 125                                          rpoB (beta-subunit of RNA pol)
+## 126                                          rpoB (beta-subunit of RNA pol)
+## 127                                          rpoB (beta-subunit of RNA pol)
+## 128                                          rpoB (beta-subunit of RNA pol)
+## 129                                          rpoB (beta-subunit of RNA pol)
+## 130                                          rpoB (beta-subunit of RNA pol)
+## 131                                          rpoB (beta-subunit of RNA pol)
+## 132                                          rpoB (beta-subunit of RNA pol)
+## 133                                          rpoB (beta-subunit of RNA pol)
+## 134                                          rpoB (beta-subunit of RNA pol)
+## 135                                                              DNA gyrase
+## 136                                                              DNA gyrase
+## 137                                                              DNA gyrase
+## 138                                                              DNA gyrase
+##       gene_mutation
+## 1       rpoB V1080I
+## 2       rpoB V1080L
+## 3       rpoB E1084K
+## 4       rpoB D1101E
+## 5       rpoB S1127L
+## 6       rpoB S1127P
+## 7        rpoC K334N
+## 8        rpoC T925K
+## 9        rpoC T925R
+## 10      rpoC G1172C
+## 11      rpoC G1172D
+## 12        rpsL K43R
+## 13        rpsL K43T
+## 14        rpsL K88E
+## 15        rpsL K43N
+## 16        rpsL K88R
+## 17   16S rRNA C522T
+## 18   16S rRNA A523C
+## 19   16S rRNA G524C
+## 20  16S rRNA C526T 
+## 21  16S rRNA A1408G
+## 22   16S rRNA C526T
+## 23        rpsL K42T
+## 24        rpsL K42N
+## 25      rpsE C1186U
+## 26      rpsE A1185G
+## 27        gryB G85S
+## 28       gyrB R144S
+## 29       gyrB T173I
+## 30        DHFR L41F
+## 31        DHFR F99S
+## 32       DHFR H150R
+## 33        DHFR F99Y
+## 34        EF-G A67T
+## 35       EF-G P406L
+## 36       EF-G S416F
+## 37       EF-G H457Y
+## 38  23S rRNA A2058G
+## 39  23S rRNA A2059G
+## 40       23S A2074C
+## 41       23S A2075G
+## 42        grlA S80F
+## 43        grlA S80Y
+## 44        grlA E84K
+## 45       grlA A116E
+## 46        parC S79F
+## 47        parC S79Y
+## 48        parC D83Y
+## 49       parE D435N
+## 50        gyrA S81Y
+## 51        gyrA E85K
+## 52        gyrA S81F
+## 53        gyrA S83A
+## 54        gyrA D87Y
+## 55        gyrA D87G
+## 56       gyrB S464F
+## 57    gyrB delta9nt
+## 58        marR R77L
+## 59        marR R94H
+## 60  marR delta13 nt
+## 61        gyrA D87G
+## 62        gyrA S83L
+## 63        gyrA D87Y
+## 64        gyrA S83L
+## 65        gyrA D87N
+## 66        parC S80I
+## 67       marR delta
+## 68       acrR delta
+## 69        gyrA E85K
+## 70        parC S79F
+## 71        parC S79Y
+## 72        parC D83N
+## 73        parC D83Y
+## 74       rpoB I572F
+## 75       rpoB I572L
+## 76       rpoB 1572N
+## 77       rpoB S531L
+## 78       rpoB H526Y
+## 79       rpoB H526D
+## 80       rpoB S531W
+## 81       rpoB H526R
+## 82       rpoB S522L
+## 83       rpoB Q513L
+## 84       rpoB H526P
+## 85       rpoB R529Q
+## 86       rpoB H489Q
+## 87       rpoB H489Y
+## 88       rpoB R492H
+## 89       rpoB Q480H
+## 90      rpoB S531W 
+## 91       rpoB D516V
+## 92       rpoB H526N
+## 93       rpoB H526L
+## 94       rpoB H526Y
+## 95       rpoB D516Y
+## 96       rpoB D516N
+## 97       rpoB R529H
+## 98       rpoB S512F
+## 99       rpoB S531F
+## 100      rpoB H526D
+## 101      rpoB L511Q
+## 102            &lt;NA&gt;
+## 103      rpoB Q148L
+## 104      rpoB Q418L
+## 105      rpoB P564L
+## 106      rpoB D516G
+## 107      rpoB H481N
+## 108      rpoB N471Y
+## 109      rpoB N471Q
+## 110      rpoB N471G
+## 111      rpoB I527F
+## 112      rpoB S464P
+## 113      rpoB N474K
+## 114      rpoB A477V
+## 115      rpoB A477N
+## 116      rpoB R484H
+## 117      rpoB S486L
+## 118      rpoB Q468R
+## 119      rpoB Q468L
+## 120      rpoB H481Y
+## 121      rpoB D471E
+## 122      rpoB Q137L
+## 123      rpoB L466S
+## 124  rpoB deltaL485
+## 125      rpoB D471Y
+## 126      rpoB L488S
+## 127      rpoB P519L
+## 128      rpoB A477D
+## 129      rpoB H481D
+## 130      rpoB S531L
+## 131      rpoB H526Y
+## 132      rpoB S531W
+## 133      rpoB H526R
+## 134      rpoB H526P
+## 135       gyrA D94G
+## 136       gyrA D94Y
+## 137       gyrA D94N
+## 138       gyrA G88C</code></pre>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-Database-Creation.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

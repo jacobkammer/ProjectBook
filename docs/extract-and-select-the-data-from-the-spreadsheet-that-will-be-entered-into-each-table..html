@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>04-Microbial-Fitness</title>
+  <title>Chapter 6 Extract and select the data from the spreadsheet that will be entered into each table. | 04-Microbial-Fitness</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="04-Microbial-Fitness" />
+  <meta property="og:title" content="Chapter 6 Extract and select the data from the spreadsheet that will be entered into each table. | 04-Microbial-Fitness" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,7 +19,7 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="04-Microbial-Fitness" />
+  <meta name="twitter:title" content="Chapter 6 Extract and select the data from the spreadsheet that will be entered into each table. | 04-Microbial-Fitness" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
@@ -36,8 +36,8 @@ set in the _output.yml file.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html"/>
+<link rel="prev" href="data-set-metrics.html"/>
+<link rel="next" href="populate-each-table-of-the-atb.db-with-the-selected-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -198,21 +198,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">04-Microbial-Fitness</h1>
-<p class="author"><em>kammer</em></p>
-<p class="date"><em>2024-12-08</em></p>
-</div>
-<div id="display-the-distribution-of-numeric-variables" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Display the Distribution of Numeric variables<a href="index.html#display-the-distribution-of-numeric-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table." class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Extract and select the data from the spreadsheet that will be entered into each table.<a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table." class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-1" tabindex="-1"></a>atbdf <span class="ot">&lt;-</span>  costR <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-2" tabindex="-1"></a>  <span class="fu">select</span>(antibioticType, antibioticClass) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-3" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb14-4"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-4" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-5" tabindex="-1"></a>distinctBac <span class="ot">&lt;-</span> costR <span class="sc">%&gt;%</span> </span>
+<span id="cb14-6"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-6" tabindex="-1"></a>  <span class="fu">select</span>(bacteria, gram_stain, gene_target, gene_mutation) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-7"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-7" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb14-8"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-8" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-9" tabindex="-1"></a>FIT <span class="ot">&lt;-</span>  costR <span class="sc">%&gt;%</span> </span>
+<span id="cb14-10"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-10" tabindex="-1"></a>  <span class="fu">select</span>(MIC, Selection_coefficient,</span>
+<span id="cb14-11"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-11" tabindex="-1"></a>         fitness, SE, gene_mutation, antibioticType) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-12"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-12" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb14-13"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-13" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-14" tabindex="-1"></a>REF <span class="ot">&lt;-</span>  costR <span class="sc">%&gt;%</span> </span>
+<span id="cb14-15"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-15" tabindex="-1"></a>  <span class="fu">select</span>(strain_reference, technique, medium) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-16"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb14-16" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb15-1" tabindex="-1"></a><span class="cf">if</span> (<span class="st">&quot;Antibiotic_Table&quot;</span> <span class="sc">%in%</span> <span class="fu">dbListTables</span>(antibiotic_db)) {</span>
+<span id="cb15-2"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb15-2" tabindex="-1"></a>  <span class="fu">dbExecute</span>(antibiotic_db, <span class="st">&quot;DROP TABLE Antibiotic_Table&quot;</span>)</span>
+<span id="cb15-3"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb15-3" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html#cb17-1" tabindex="-1"></a><span class="fu">dbWriteTable</span>(antibiotic_db, <span class="st">&quot;Antibiotic_Table&quot;</span>, atbdf, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-set-metrics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="populate-each-table-of-the-atb.db-with-the-selected-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -243,7 +259,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-Database-Creation.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Chapter 3:Analysis | The Effects of antibiotic resistance mutations on bacterial fitness</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Chapter 3:Analysis | The Effects of antibiotic resistance mutations on bacterial fitness" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Chapter 3:Analysis | The Effects of antibiotic resistance mutations on bacterial fitness" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Jacob W. Kammer" />
+
+
+<meta name="date" content="2024-12-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chapter-two-build-atb-database.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">antibiotic resistance mutations and bacterial fitness</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Display the Distribution of Numeric variables</a></li>
+<li class="chapter" data-level="2" data-path="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html"><a href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html"><i class="fa fa-check"></i><b>2</b> Display the Relationships between numeric Variables using multiple graphing techniques</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html"><a href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html#preview-book"><i class="fa fa-check"></i><b>2.1</b> Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-one-introduction.html"><a href="chapter-one-introduction.html"><i class="fa fa-check"></i><b>3</b> Chapter One: Introduction</a></li>
+<li class="chapter" data-level="4" data-path="chapter-two-build-atb-database.html"><a href="chapter-two-build-atb-database.html"><i class="fa fa-check"></i><b>4</b> Chapter Two: Build ATB database</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chapter-two-build-atb-database.html"><a href="chapter-two-build-atb-database.html#data-set-description"><i class="fa fa-check"></i><b>4.1</b> Data set Description</a></li>
+<li class="chapter" data-level="4.2" data-path="chapter-two-build-atb-database.html"><a href="chapter-two-build-atb-database.html#database-structure"><i class="fa fa-check"></i><b>4.2</b> Database Structure</a></li>
+<li class="chapter" data-level="4.3" data-path="chapter-two-build-atb-database.html"><a href="chapter-two-build-atb-database.html#extract-data."><i class="fa fa-check"></i><b>4.3</b> Extract Data.</a></li>
+<li class="chapter" data-level="4.4" data-path="chapter-two-build-atb-database.html"><a href="chapter-two-build-atb-database.html#populate-tables"><i class="fa fa-check"></i><b>4.4</b> Populate tables</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html"><i class="fa fa-check"></i><b>5</b> Chapter 3:Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html#ranges-of-numeric-variables."><i class="fa fa-check"></i><b>5.1</b> Ranges of Numeric Variables.</a></li>
+<li class="chapter" data-level="5.2" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html#scatter-plot"><i class="fa fa-check"></i><b>5.2</b> Scatter plot:</a></li>
+<li class="chapter" data-level="5.3" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html#pair-plot-scatter-plot-matrix"><i class="fa fa-check"></i><b>5.3</b> Pair Plot (Scatter plot Matrix):</a></li>
+<li class="chapter" data-level="5.4" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html#scatter-plot-matrix-2"><i class="fa fa-check"></i><b>5.4</b> Scatter plot Matrix 2:</a></li>
+<li class="chapter" data-level="5.5" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html#fitness-ranges"><i class="fa fa-check"></i><b>5.5</b> Fitness Ranges:</a></li>
+<li class="chapter" data-level="5.6" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html#staphycococcal-aureus."><i class="fa fa-check"></i><b>5.6</b> Staphycococcal aureus.</a></li>
+<li class="chapter" data-level="5.7" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html#antibiotic-class-and-fitness"><i class="fa fa-check"></i><b>5.7</b> Antibiotic class and fitness</a></li>
+<li class="chapter" data-level="5.8" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html#relative-fitness"><i class="fa fa-check"></i><b>5.8</b> Relative Fitness:</a></li>
+<li class="chapter" data-level="5.9" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html#heat-map"><i class="fa fa-check"></i><b>5.9</b> Heat Map:</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Effects of antibiotic resistance mutations on bacterial fitness</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter-3analysis" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Chapter 3:Analysis<a href="chapter-3analysis.html#chapter-3analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The analysis surveyed the distribution of the numeric variables and their relationships. The principle goal of the analysis was to study the effects of antibiotic resistance gene mutations on the fitness of Staphylococcus aureus. This analysis will contribute to the development of a computer model to study the effects of antibiotic resistance on the growth of Staphycococcus aureus in blood.</p>
+<div id="ranges-of-numeric-variables." class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Ranges of Numeric Variables.<a href="chapter-3analysis.html#ranges-of-numeric-variables." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="chapter-3analysis.html#cb17-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb17-2"><a href="chapter-3analysis.html#cb17-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> costR <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="chapter-3analysis.html#cb17-3" tabindex="-1"></a>  <span class="fu">select</span>(fitness) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-4"><a href="chapter-3analysis.html#cb17-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fitness))<span class="sc">+</span></span>
+<span id="cb17-5"><a href="chapter-3analysis.html#cb17-5" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.01</span>)<span class="sc">+</span></span>
+<span id="cb17-6"><a href="chapter-3analysis.html#cb17-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Range of Fitness Values&quot;</span>)<span class="sc">+</span></span>
+<span id="cb17-7"><a href="chapter-3analysis.html#cb17-7" tabindex="-1"></a>  <span class="fu">theme</span>()</span>
+<span id="cb17-8"><a href="chapter-3analysis.html#cb17-8" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="chapter-3analysis.html#cb17-9" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> costR, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> SE))<span class="sc">+</span></span>
+<span id="cb17-10"><a href="chapter-3analysis.html#cb17-10" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.01</span>)<span class="sc">+</span></span>
+<span id="cb17-11"><a href="chapter-3analysis.html#cb17-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span> <span class="st">&quot;Range of SE values&quot;</span>)<span class="sc">+</span></span>
+<span id="cb17-12"><a href="chapter-3analysis.html#cb17-12" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb17-13"><a href="chapter-3analysis.html#cb17-13" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="chapter-3analysis.html#cb17-14" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> costR, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Selection_coefficient))<span class="sc">+</span></span>
+<span id="cb17-15"><a href="chapter-3analysis.html#cb17-15" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.01</span>)<span class="sc">+</span></span>
+<span id="cb17-16"><a href="chapter-3analysis.html#cb17-16" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Range of Selection coefficient values&quot;</span>,</span>
+<span id="cb17-17"><a href="chapter-3analysis.html#cb17-17" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Selection Coefficient&quot;</span>)<span class="sc">+</span></span>
+<span id="cb17-18"><a href="chapter-3analysis.html#cb17-18" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb17-19"><a href="chapter-3analysis.html#cb17-19" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="chapter-3analysis.html#cb17-20" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> costR <span class="sc">%&gt;%</span> </span>
+<span id="cb17-21"><a href="chapter-3analysis.html#cb17-21" tabindex="-1"></a>  <span class="fu">select</span>(MIC) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-22"><a href="chapter-3analysis.html#cb17-22" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> MIC))<span class="sc">+</span></span>
+<span id="cb17-23"><a href="chapter-3analysis.html#cb17-23" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>)<span class="sc">+</span></span>
+<span id="cb17-24"><a href="chapter-3analysis.html#cb17-24" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Range of Minimum Inhibitory Concentration values&quot;</span>)<span class="sc">+</span></span>
+<span id="cb17-25"><a href="chapter-3analysis.html#cb17-25" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;magma&quot;</span>)</span>
+<span id="cb17-26"><a href="chapter-3analysis.html#cb17-26" tabindex="-1"></a></span>
+<span id="cb17-27"><a href="chapter-3analysis.html#cb17-27" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="chapter-3analysis.html#cb18-1" tabindex="-1"></a>p1</span></code></pre></div>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="chapter-3analysis.html#cb19-1" tabindex="-1"></a>p2</span></code></pre></div>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-9-3.png" width="672" /></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="chapter-3analysis.html#cb20-1" tabindex="-1"></a>p3</span></code></pre></div>
+<pre><code>## Warning: Removed 51 rows containing non-finite outside the scale range
+## (`stat_bin()`).</code></pre>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-9-4.png" width="672" />
+## Relationship between Numeric Variables
+The relationship between the numeric variables of 1)fitness, 2)SE and
+3)Selection_coefficient are studied using 4 different methods or graphing techniques.</p>
+</div>
+<div id="scatter-plot" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Scatter plot:<a href="chapter-3analysis.html#scatter-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Third variable expressed with color or size Encoding. The x and y axis encodes two of the three variables. Color or size is used to represent the third variable.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="chapter-3analysis.html#cb22-1" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> costR, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fitness, <span class="at">y =</span> Selection_coefficient, <span class="at">color =</span> SE))<span class="sc">+</span></span>
+<span id="cb22-2"><a href="chapter-3analysis.html#cb22-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Scatter Plot with color encoding&quot;</span>,</span>
+<span id="cb22-3"><a href="chapter-3analysis.html#cb22-3" tabindex="-1"></a>                    <span class="at">x=</span><span class="st">&quot;Fitness&quot;</span>,</span>
+<span id="cb22-4"><a href="chapter-3analysis.html#cb22-4" tabindex="-1"></a>                    <span class="at">y =</span> <span class="st">&quot;Selection Coefficient&quot;</span>,</span>
+<span id="cb22-5"><a href="chapter-3analysis.html#cb22-5" tabindex="-1"></a>                    <span class="at">color =</span> <span class="st">&quot;SE&quot;</span>)</span>
+<span id="cb22-6"><a href="chapter-3analysis.html#cb22-6" tabindex="-1"></a>p4</span></code></pre></div>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="chapter-3analysis.html#cb23-1" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> costR, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fitness, <span class="at">y =</span> Selection_coefficient, <span class="at">size =</span> SE))<span class="sc">+</span></span>
+<span id="cb23-2"><a href="chapter-3analysis.html#cb23-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb23-3"><a href="chapter-3analysis.html#cb23-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Scatter plot with size encoding&quot;</span>,</span>
+<span id="cb23-4"><a href="chapter-3analysis.html#cb23-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Fitness&quot;</span>,</span>
+<span id="cb23-5"><a href="chapter-3analysis.html#cb23-5" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Selection Coefficient&quot;</span>,</span>
+<span id="cb23-6"><a href="chapter-3analysis.html#cb23-6" tabindex="-1"></a>       <span class="at">size =</span> <span class="st">&quot;SE&quot;</span>)</span>
+<span id="cb23-7"><a href="chapter-3analysis.html#cb23-7" tabindex="-1"></a>p5</span></code></pre></div>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+</div>
+<div id="pair-plot-scatter-plot-matrix" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Pair Plot (Scatter plot Matrix):<a href="chapter-3analysis.html#pair-plot-scatter-plot-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The ‘GGally’ package is used to create a scatter plot matrix to visualize pairwise relationships between multiple variables.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="chapter-3analysis.html#cb24-1" tabindex="-1"></a>numericonly <span class="ot">&lt;-</span> costR <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="chapter-3analysis.html#cb24-2" tabindex="-1"></a>  <span class="fu">select</span>(fitness, Selection_coefficient, SE)</span>
+<span id="cb24-3"><a href="chapter-3analysis.html#cb24-3" tabindex="-1"></a><span class="co">#Use the data</span></span>
+<span id="cb24-4"><a href="chapter-3analysis.html#cb24-4" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggpairs</span>(numericonly, <span class="at">title =</span> <span class="st">&#39;Pair Plot&#39;</span>)</span>
+<span id="cb24-5"><a href="chapter-3analysis.html#cb24-5" tabindex="-1"></a>g</span></code></pre></div>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+<div id="scatter-plot-matrix-2" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Scatter plot Matrix 2:<a href="chapter-3analysis.html#scatter-plot-matrix-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>‘Lattice’ package</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="chapter-3analysis.html#cb25-1" tabindex="-1"></a><span class="fu">splom</span>(numericonly,</span>
+<span id="cb25-2"><a href="chapter-3analysis.html#cb25-2" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">&quot;Scatterplot Matrix&quot;</span>)</span></code></pre></div>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="fitness-ranges" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Fitness Ranges:<a href="chapter-3analysis.html#fitness-ranges" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ranges of fitness values and assign to general categories. Encode the results in a table using the ‘gt()’ package.</p>
+<div id="nofglrfjuy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nofglrfjuy table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#nofglrfjuy thead, #nofglrfjuy tbody, #nofglrfjuy tfoot, #nofglrfjuy tr, #nofglrfjuy td, #nofglrfjuy th {
+  border-style: none;
+}
+
+#nofglrfjuy p {
+  margin: 0;
+  padding: 0;
+}
+
+#nofglrfjuy .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#nofglrfjuy .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#nofglrfjuy .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#nofglrfjuy .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#nofglrfjuy .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nofglrfjuy .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nofglrfjuy .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nofglrfjuy .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#nofglrfjuy .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#nofglrfjuy .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#nofglrfjuy .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#nofglrfjuy .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#nofglrfjuy .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#nofglrfjuy .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#nofglrfjuy .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nofglrfjuy .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#nofglrfjuy .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#nofglrfjuy .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#nofglrfjuy .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nofglrfjuy .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#nofglrfjuy .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#nofglrfjuy .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#nofglrfjuy .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nofglrfjuy .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#nofglrfjuy .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#nofglrfjuy .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nofglrfjuy .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nofglrfjuy .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#nofglrfjuy .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nofglrfjuy .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#nofglrfjuy .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nofglrfjuy .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nofglrfjuy .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nofglrfjuy .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nofglrfjuy .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nofglrfjuy .gt_left {
+  text-align: left;
+}
+
+#nofglrfjuy .gt_center {
+  text-align: center;
+}
+
+#nofglrfjuy .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#nofglrfjuy .gt_font_normal {
+  font-weight: normal;
+}
+
+#nofglrfjuy .gt_font_bold {
+  font-weight: bold;
+}
+
+#nofglrfjuy .gt_font_italic {
+  font-style: italic;
+}
+
+#nofglrfjuy .gt_super {
+  font-size: 65%;
+}
+
+#nofglrfjuy .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#nofglrfjuy .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#nofglrfjuy .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#nofglrfjuy .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#nofglrfjuy .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#nofglrfjuy .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#nofglrfjuy .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#nofglrfjuy .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#nofglrfjuy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Fitness Groups</td>
+    </tr>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="GroupFIT">Group</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="n">Number of organisms</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="pct">Percentage</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="GroupFIT" class="gt_row gt_left">Most Fit of All</td>
+<td headers="n" class="gt_row gt_right">5</td>
+<td headers="pct" class="gt_row gt_right">2.793</td></tr>
+    <tr><td headers="GroupFIT" class="gt_row gt_left">Highly Fit</td>
+<td headers="n" class="gt_row gt_right">1</td>
+<td headers="pct" class="gt_row gt_right">0.559</td></tr>
+    <tr><td headers="GroupFIT" class="gt_row gt_left">Fit</td>
+<td headers="n" class="gt_row gt_right">22</td>
+<td headers="pct" class="gt_row gt_right">12.291</td></tr>
+    <tr><td headers="GroupFIT" class="gt_row gt_left">Less Fit</td>
+<td headers="n" class="gt_row gt_right">118</td>
+<td headers="pct" class="gt_row gt_right">65.922</td></tr>
+    <tr><td headers="GroupFIT" class="gt_row gt_left">Much Less Fit</td>
+<td headers="n" class="gt_row gt_right">24</td>
+<td headers="pct" class="gt_row gt_right">13.408</td></tr>
+    <tr><td headers="GroupFIT" class="gt_row gt_left">Least Fit of All</td>
+<td headers="n" class="gt_row gt_right">9</td>
+<td headers="pct" class="gt_row gt_right">5.028</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+<div id="staphycococcal-aureus." class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Staphycococcal aureus.<a href="chapter-3analysis.html#staphycococcal-aureus." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The cell wall is an important target of mutations that
+confer antibiotic resistance. The bacterial cell wall is built with alternating monomers of N-Acetylglucosamine and n-Acetylmuramic acid forming the peptidoglycan of the cell wall. Staphycococcus aureus and other gram positive organisms have a much greater amount of peptidoglycan in the cell wall. This biochemical difference in cell wall structure suggests that there could be a significant difference in fitness costs between gram positive and gram negative organisms.</p>
+<div id="hxsiqqivzu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hxsiqqivzu table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#hxsiqqivzu thead, #hxsiqqivzu tbody, #hxsiqqivzu tfoot, #hxsiqqivzu tr, #hxsiqqivzu td, #hxsiqqivzu th {
+  border-style: none;
+}
+
+#hxsiqqivzu p {
+  margin: 0;
+  padding: 0;
+}
+
+#hxsiqqivzu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hxsiqqivzu .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#hxsiqqivzu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hxsiqqivzu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hxsiqqivzu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hxsiqqivzu .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hxsiqqivzu .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hxsiqqivzu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hxsiqqivzu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hxsiqqivzu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hxsiqqivzu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hxsiqqivzu .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hxsiqqivzu .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#hxsiqqivzu .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#hxsiqqivzu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hxsiqqivzu .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hxsiqqivzu .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hxsiqqivzu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hxsiqqivzu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hxsiqqivzu .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#hxsiqqivzu .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#hxsiqqivzu .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#hxsiqqivzu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hxsiqqivzu .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#hxsiqqivzu .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#hxsiqqivzu .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hxsiqqivzu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hxsiqqivzu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hxsiqqivzu .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hxsiqqivzu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hxsiqqivzu .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hxsiqqivzu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hxsiqqivzu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hxsiqqivzu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hxsiqqivzu .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hxsiqqivzu .gt_left {
+  text-align: left;
+}
+
+#hxsiqqivzu .gt_center {
+  text-align: center;
+}
+
+#hxsiqqivzu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hxsiqqivzu .gt_font_normal {
+  font-weight: normal;
+}
+
+#hxsiqqivzu .gt_font_bold {
+  font-weight: bold;
+}
+
+#hxsiqqivzu .gt_font_italic {
+  font-style: italic;
+}
+
+#hxsiqqivzu .gt_super {
+  font-size: 65%;
+}
+
+#hxsiqqivzu .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#hxsiqqivzu .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#hxsiqqivzu .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#hxsiqqivzu .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#hxsiqqivzu .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hxsiqqivzu .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hxsiqqivzu .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#hxsiqqivzu .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#hxsiqqivzu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="6" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Differences in fitness based on gram stain</td>
+    </tr>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="gram_stain">Gram stain</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="mean_fitness">Mean Fitness</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="IQR">Interquantile Range</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Minumum">Minimum</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Maximum">Maximum</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Standard_deviation">Standard Deviation</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="gram_stain" class="gt_row gt_left">negative</td>
+<td headers="mean_fitness" class="gt_row gt_right">0.9733961</td>
+<td headers="IQR" class="gt_row gt_right">0.1294500</td>
+<td headers="Minumum" class="gt_row gt_right">0.725</td>
+<td headers="Maximum" class="gt_row gt_right">1.5134</td>
+<td headers="Standard_deviation" class="gt_row gt_right">0.1678243</td></tr>
+    <tr><td headers="gram_stain" class="gt_row gt_left">positive</td>
+<td headers="mean_fitness" class="gt_row gt_right">0.8224603</td>
+<td headers="IQR" class="gt_row gt_right">0.2226997</td>
+<td headers="Minumum" class="gt_row gt_right">0.133</td>
+<td headers="Maximum" class="gt_row gt_right">1.2200</td>
+<td headers="Standard_deviation" class="gt_row gt_right">0.2154585</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<pre><code>## # A tibble: 2 × 6
+##   gram_stain mean_fitness   IQR Minumum Maximum Standard_deviation
+##   &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;              &lt;dbl&gt;
+## 1 negative          0.973 0.129   0.725    1.51              0.168
+## 2 positive          0.822 0.223   0.133    1.22              0.215</code></pre>
+<p>Gram-positive bacteria had a significantly
+greater fitness costs associated with resistance mutations
+(mean fitness = 0.822) when compared with Gram-negative
+bacteria (mean fitness = 0.973). Caution must be used in interpreting
+this result because there were a greater number of Gram-negative
+than Gram-positive bacteria in the data set.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="chapter-3analysis.html#cb27-1" tabindex="-1"></a>costR <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="chapter-3analysis.html#cb27-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>gram_stain, <span class="at">y=</span>fitness))<span class="sc">+</span></span>
+<span id="cb27-3"><a href="chapter-3analysis.html#cb27-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>A boxplot of fitness between gram + and gram - organisms does not show
+much of a difference between the two groups.</p>
+</div>
+<div id="antibiotic-class-and-fitness" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Antibiotic class and fitness<a href="chapter-3analysis.html#antibiotic-class-and-fitness" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="chapter-3analysis.html#cb28-1" tabindex="-1"></a>costR <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="chapter-3analysis.html#cb28-2" tabindex="-1"></a>  <span class="fu">select</span>(antibioticClass, fitness) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="chapter-3analysis.html#cb28-3" tabindex="-1"></a>  <span class="fu">group_by</span>(antibioticClass) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-4"><a href="chapter-3analysis.html#cb28-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_cost =</span> <span class="fu">mean</span>(fitness),</span>
+<span id="cb28-5"><a href="chapter-3analysis.html#cb28-5" tabindex="-1"></a>            <span class="at">stddev =</span> <span class="fu">sd</span>(fitness, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb28-6"><a href="chapter-3analysis.html#cb28-6" tabindex="-1"></a>            <span class="at">meansd_l =</span> mean_cost <span class="sc">-</span> stddev,</span>
+<span id="cb28-7"><a href="chapter-3analysis.html#cb28-7" tabindex="-1"></a>            <span class="at">meansd_u =</span> mean_cost <span class="sc">+</span> stddev) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-8"><a href="chapter-3analysis.html#cb28-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span> mean_cost, <span class="at">y =</span> antibioticClass))<span class="sc">+</span></span>
+<span id="cb28-9"><a href="chapter-3analysis.html#cb28-9" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb28-10"><a href="chapter-3analysis.html#cb28-10" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb28-11"><a href="chapter-3analysis.html#cb28-11" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">xmin =</span> meansd_l, <span class="at">xmax =</span> meansd_u))<span class="sc">+</span></span>
+<span id="cb28-12"><a href="chapter-3analysis.html#cb28-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Mean Fitness Cost&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Antibiotic Class&quot;</span>)<span class="sc">+</span></span>
+<span id="cb28-13"><a href="chapter-3analysis.html#cb28-13" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Fitness Cost each Antibiotic Class&quot;</span>)</span></code></pre></div>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>The dihydrofolate reductase inhibitors appear to be either cost-free or the costs are so small they cannot be detected by the assay techniques used in this study.</p>
+</div>
+<div id="relative-fitness" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> Relative Fitness:<a href="chapter-3analysis.html#relative-fitness" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Relative fitness and 95% CI of antibiotic Resistance mutation
+associated with a specific antibiotic, Fitness cost &lt; 1 indicates less fit and Fitness Cost &gt; 1 associated with more fit.</p>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>The antibiotic Trimethoprim has mean fitness of cost of greater than 1, indicating that the gene mutation that creates resistance to Trimethoprim does not negatively impact microbial fitness. Trimethoprim is a member of the drug class dihydrofolate reductase inhibitors. This finding correlates with the graph of fitness and drug class.</p>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+Resistance mutations in two species, Enterococcus faecium and Borrelia burgorferi, showed no evidence for a fitness cost. Other bacteria species had a fitness cost to Mean relative fitness and 95% CI of antibiotic resistance mutation associated with a given bacteria Fitness cost &lt; 1 indicates less fit.</p>
+</div>
+<div id="heat-map" class="section level2 hasAnchor" number="5.9">
+<h2><span class="header-section-number">5.9</span> Heat Map:<a href="chapter-3analysis.html#heat-map" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Create a heat map with antibiotic and bacteria as the two categorical variables and fitness as a numeric variable.</p>
+<pre><code>## `summarise()` has grouped output by &#39;bacteria&#39;, &#39;antibioticType&#39;.
+## You can override using the `.groups` argument.</code></pre>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>Analysis of Staph aureus gene mutations
+How many Staph aureus gene mutations associated with fitness is &lt; 1, indicating less fit?</p>
+<pre><code>##    n
+## 1 44</code></pre>
+<p>How many Staph aureus gene mutations associated with fitness is &gt; 1, indicating improved fitness?</p>
+<pre><code>##   n
+## 1 5</code></pre>
+<p>There are 5 gene mutations in Staph aureus associated with improved microbial fitness and 44 gene mutations associated with a decrease in fitness.</p>
+<p>What are the gene mutations associated with a decrease and increase in microbial fitness.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="chapter-3analysis.html#cb32-1" tabindex="-1"></a>BacterialessFIT <span class="ot">&lt;-</span> costR <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="chapter-3analysis.html#cb32-2" tabindex="-1"></a>  <span class="fu">select</span>(bacteria, gene_mutation, fitness) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-3"><a href="chapter-3analysis.html#cb32-3" tabindex="-1"></a>  <span class="fu">filter</span>(bacteria <span class="sc">==</span> <span class="st">&quot;S. aureus&quot;</span> <span class="sc">&amp;</span> fitness <span class="sc">&lt;</span> <span class="fl">1.0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-4"><a href="chapter-3analysis.html#cb32-4" tabindex="-1"></a>  <span class="fu">distinct</span>(gene_mutation) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-5"><a href="chapter-3analysis.html#cb32-5" tabindex="-1"></a><span class="fu">rename</span>(<span class="st">&quot;Gene Mutation&quot;</span> <span class="ot">=</span> gene_mutation)</span>
+<span id="cb32-6"><a href="chapter-3analysis.html#cb32-6" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="chapter-3analysis.html#cb32-7" tabindex="-1"></a>BacterialessFIT</span></code></pre></div>
+<pre><code>##     Gene Mutation
+## 1     rpoB V1080I
+## 2     rpoB V1080L
+## 3     rpoB E1084K
+## 4     rpoB D1101E
+## 5     rpoB S1127L
+## 6     rpoB S1127P
+## 7      rpoC K334N
+## 8      rpoC T925K
+## 9      rpoC T925R
+## 10    rpoC G1172C
+## 11    rpoC G1172D
+## 12      gryB G85S
+## 13     gyrB R144S
+## 14     gyrB T173I
+## 15     DHFR H150R
+## 16      EF-G A67T
+## 17     EF-G P406L
+## 18     EF-G S416F
+## 19     EF-G H457Y
+## 20      grlA S80F
+## 21      grlA S80Y
+## 22     rpoB N471Y
+## 23     rpoB N471Q
+## 24     rpoB N471G
+## 25     rpoB I527F
+## 26     rpoB S464P
+## 27     rpoB N474K
+## 28     rpoB A477V
+## 29     rpoB A477N
+## 30     rpoB R484H
+## 31     rpoB S486L
+## 32     rpoB Q468R
+## 33     rpoB Q468L
+## 34     rpoB H481Y
+## 35     rpoB D471E
+## 36     rpoB Q137L
+## 37     rpoB L466S
+## 38     rpoB H481N
+## 39 rpoB deltaL485
+## 40     rpoB D471Y
+## 41     rpoB L488S
+## 42     rpoB P519L
+## 43     rpoB A477D
+## 44     rpoB H481D</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="chapter-3analysis.html#cb34-1" tabindex="-1"></a>BacteriaMoreFit <span class="ot">&lt;-</span> costR <span class="sc">%&gt;%</span> </span>
+<span id="cb34-2"><a href="chapter-3analysis.html#cb34-2" tabindex="-1"></a>  <span class="fu">select</span>(bacteria, gene_mutation, fitness) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-3"><a href="chapter-3analysis.html#cb34-3" tabindex="-1"></a>  <span class="fu">filter</span>(bacteria <span class="sc">==</span> <span class="st">&quot;S. aureus&quot;</span> <span class="sc">&amp;</span> fitness <span class="sc">&gt;</span> <span class="fl">1.0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-4"><a href="chapter-3analysis.html#cb34-4" tabindex="-1"></a>  <span class="fu">distinct</span>(gene_mutation) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-5"><a href="chapter-3analysis.html#cb34-5" tabindex="-1"></a><span class="fu">rename</span>(<span class="st">&quot;Gene Mutation&quot;</span> <span class="ot">=</span> gene_mutation)</span>
+<span id="cb34-6"><a href="chapter-3analysis.html#cb34-6" tabindex="-1"></a>BacteriaMoreFit</span></code></pre></div>
+<pre><code>##   Gene Mutation
+## 1     DHFR L41F
+## 2     DHFR F99S
+## 3     DHFR F99Y
+## 4     grlA E84K
+## 5    grlA A116E</code></pre>
+<p>Three of the five gene mutations that are associated with improved fitness and mutations in the gene that codes for the dihydrofolate reductase inhibitor.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter-two-build-atb-database.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-analysis.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["my-research-book.pdf", "my-research-book.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

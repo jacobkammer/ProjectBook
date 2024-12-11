@@ -1,5 +1,17 @@
+book_filename: "my-research-book"
 delete_merged_file: true
 language:
   ui:
     chapter_name: "Chapter "
+
+rmd_files: 
+  - "index.Rmd"
+  - "01-intro.Rmd"
+  - "02-Database-Creation.Rmd"
+  - "03-analysis.Rmd"
+  
 output_dir: "docs"
+
+clean: 
+  - "*.log"
+  - "*.aux"

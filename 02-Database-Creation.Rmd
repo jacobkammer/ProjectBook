@@ -1,6 +1,6 @@
-# Build ATB database
+# Chapter Two: Build ATB database
 
-## Build the database with four tables, which will contain all of the data for the analysis.
+
 
 ```{r}
 
@@ -9,11 +9,11 @@ costR <-  read.csv(file_path)
 
 ```
 
-# Data set Metrics
+## Data set Description
 The data set is composed of multiple instances of common pathogenic microorganisms, both gram positive and gram cost, Selection coefficient, standard error, specific gene mutations, antibiotics and antibiotic class.  Additional information included reference population, gene target and bacterial medium used to grow the different bacterial species. The data focuses on fitness effects of **single** chromosomal mutations.
 
-
-```{r image_relationship, fig.cap="Database Diagram", fig.align='center', out.width='100%'}
+## Database Structure
+```{r image_relationship, echo=FALSE, fig.align='center', fig.cap="Database Diagram", out.width='100%'}
 knitr::include_graphics("Relationship.jpeg")
 ```
 
@@ -71,19 +71,10 @@ dbExecute(antibiotic_db, "
 
 
 
-
-
-
-
-
-
-
-
-
 ```
 
 
-# Extract and select the data from the spreadsheet that will be entered into each table.
+## Extract Data.
 ```{r}
 atbdf <-  costR %>% 
   select(antibioticType, antibioticClass) %>% 
@@ -113,9 +104,9 @@ dbWriteTable(antibiotic_db, "Antibiotic_Table", atbdf, overwrite = TRUE)
 
 
 
-# Populate each table of the ATB.db with the selected data ####
+## Populate tables
 
-```{r}
+```{r message=TRUE, warning=TRUE, include=FALSE}
 dbWriteTable(antibiotic_db, "Antibiotic_Table", atbdf, overwrite = TRUE)
 dbWriteTable(antibiotic_db, "Bacteria", distinctBac, overwrite = TRUE)
 dbWriteTable(antibiotic_db, "microbial_fitness", FIT, overwrite = TRUE)  

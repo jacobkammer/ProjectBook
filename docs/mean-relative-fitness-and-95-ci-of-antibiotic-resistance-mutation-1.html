@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 18 Mean relative fitness and 95% CI of antibiotic Resistance mutation | 04-Microbial-Fitness</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 18 Mean relative fitness and 95% CI of antibiotic Resistance mutation | 04-Microbial-Fitness" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 18 Mean relative fitness and 95% CI of antibiotic Resistance mutation | 04-Microbial-Fitness" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="kammer" />
+
+
+<meta name="date" content="2024-12-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="the-dihydrofolate-reductase-inhibitors-appear-to-be-either-cost-free-or-the-costs-are-so-small-they-cannot-be-detected-by-the-assay-techniques-used-in-this-study.-1.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">antibiotic resistance mutations and bacterial fitness</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Display the Distribution of Numeric variables</a></li>
+<li class="chapter" data-level="2" data-path="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html"><a href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html"><i class="fa fa-check"></i><b>2</b> Display the Relationships between numeric Variables using multiple graphing techniques</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html"><a href="display-the-relationships-between-numeric-variables-using-multiple-graphing-techniques.html#preview-book"><i class="fa fa-check"></i><b>2.1</b> Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-one-introduction.html"><a href="chapter-one-introduction.html"><i class="fa fa-check"></i><b>3</b> Chapter One: Introduction</a></li>
+<li class="chapter" data-level="4" data-path="build-atb-database.html"><a href="build-atb-database.html"><i class="fa fa-check"></i><b>4</b> Build ATB database</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="build-atb-database.html"><a href="build-atb-database.html#build-the-database-with-four-tables-which-will-contain-all-of-the-data-for-the-analysis."><i class="fa fa-check"></i><b>4.1</b> Build the database with four tables, which will contain all of the data for the analysis.</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-set-metrics.html"><a href="data-set-metrics.html"><i class="fa fa-check"></i><b>5</b> Data set Metrics</a></li>
+<li class="chapter" data-level="6" data-path="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html"><a href="extract-and-select-the-data-from-the-spreadsheet-that-will-be-entered-into-each-table..html"><i class="fa fa-check"></i><b>6</b> Extract and select the data from the spreadsheet that will be entered into each table.</a></li>
+<li class="chapter" data-level="7" data-path="populate-each-table-of-the-atb.db-with-the-selected-data.html"><a href="populate-each-table-of-the-atb.db-with-the-selected-data.html"><i class="fa fa-check"></i><b>7</b> Populate each table of the ATB.db with the selected data</a></li>
+<li class="chapter" data-level="8" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html"><i class="fa fa-check"></i><b>8</b> Chapter 3:Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html#ranges-of-numeric-variables."><i class="fa fa-check"></i><b>8.1</b> Ranges of Numeric Variables.</a></li>
+<li class="chapter" data-level="8.2" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html#scatter-plot-with-color-or-size-encoding.-the-x-and-y-axis-encodes-two-of-the-three-variables.-color-or-size-is-used-to-represent-the-third-variable."><i class="fa fa-check"></i><b>8.2</b> Scatter plot with color or size Encoding. The x and y axis encodes two of the three variables. Color or size is used to represent the third variable.</a></li>
+<li class="chapter" data-level="8.3" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html#pair-plot-scatter-plot-matrix.-the-ggally-package-is-used-to-create-a-scatter-plot-matrix-to-visualize-pairwise-relationships-between-multiple-variables."><i class="fa fa-check"></i><b>8.3</b> Pair Plot (Scatter plot Matrix). The ‘GGally’ package is used to create a scatter plot matrix to visualize pairwise relationships between multiple variables.</a></li>
+<li class="chapter" data-level="8.4" data-path="chapter-3analysis.html"><a href="chapter-3analysis.html#scatter-plot-matrix-using-the-lattice-package"><i class="fa fa-check"></i><b>8.4</b> Scatter plot Matrix using the ‘Lattice’ package</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="create-ranges-of-fitness-value-and-assign-to-general-categories.-encode-the-results-in-a-table-using-the-gt-package..html"><a href="create-ranges-of-fitness-value-and-assign-to-general-categories.-encode-the-results-in-a-table-using-the-gt-package..html"><i class="fa fa-check"></i><b>9</b> Create ranges of fitness value and assign to general categories. Encode the results in a table using the ‘gt()’ package.</a></li>
+<li class="chapter" data-level="10" data-path="analysis-of-staphycococcal-aureus..html"><a href="analysis-of-staphycococcal-aureus..html"><i class="fa fa-check"></i><b>10</b> Analysis of Staphycococcal aureus.</a></li>
+<li class="chapter" data-level="11" data-path="effect-of-antibiotic-class-on-fitness.html"><a href="effect-of-antibiotic-class-on-fitness.html"><i class="fa fa-check"></i><b>11</b> Effect of antibiotic class on fitness</a></li>
+<li class="chapter" data-level="12" data-path="the-dihydrofolate-reductase-inhibitors-appear-to-be-either-cost-free-or-the-costs-are-so-small-they-cannot-be-detected-by-the-assay-techniques-used-in-this-study..html"><a href="the-dihydrofolate-reductase-inhibitors-appear-to-be-either-cost-free-or-the-costs-are-so-small-they-cannot-be-detected-by-the-assay-techniques-used-in-this-study..html"><i class="fa fa-check"></i><b>12</b> The dihydrofolate reductase inhibitors appear to be either cost-free or the costs are so small they cannot be detected by the assay techniques used in this study.</a></li>
+<li class="chapter" data-level="13" data-path="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation.html"><i class="fa fa-check"></i><b>13</b> Mean relative fitness and 95% CI of antibiotic Resistance mutation</a></li>
+<li class="chapter" data-level="14" data-path="create-ranges-of-fitness-value-and-assign-to-general-categories.-encode-the-results-in-a-table-using-the-gt-package.-1.html"><a href="create-ranges-of-fitness-value-and-assign-to-general-categories.-encode-the-results-in-a-table-using-the-gt-package.-1.html"><i class="fa fa-check"></i><b>14</b> Create ranges of fitness value and assign to general categories. Encode the results in a table using the ‘gt()’ package.</a></li>
+<li class="chapter" data-level="15" data-path="analysis-of-staphycococcal-aureus.-1.html"><a href="analysis-of-staphycococcal-aureus.-1.html"><i class="fa fa-check"></i><b>15</b> Analysis of Staphycococcal aureus.</a></li>
+<li class="chapter" data-level="16" data-path="effect-of-antibiotic-class-on-fitness-1.html"><a href="effect-of-antibiotic-class-on-fitness-1.html"><i class="fa fa-check"></i><b>16</b> Effect of antibiotic class on fitness</a></li>
+<li class="chapter" data-level="17" data-path="the-dihydrofolate-reductase-inhibitors-appear-to-be-either-cost-free-or-the-costs-are-so-small-they-cannot-be-detected-by-the-assay-techniques-used-in-this-study.-1.html"><a href="the-dihydrofolate-reductase-inhibitors-appear-to-be-either-cost-free-or-the-costs-are-so-small-they-cannot-be-detected-by-the-assay-techniques-used-in-this-study.-1.html"><i class="fa fa-check"></i><b>17</b> The dihydrofolate reductase inhibitors appear to be either cost-free or the costs are so small they cannot be detected by the assay techniques used in this study.</a></li>
+<li class="chapter" data-level="18" data-path="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html"><i class="fa fa-check"></i><b>18</b> Mean relative fitness and 95% CI of antibiotic Resistance mutation</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">04-Microbial-Fitness</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1" class="section level1 hasAnchor" number="18">
+<h1><span class="header-section-number">Chapter 18</span> Mean relative fitness and 95% CI of antibiotic Resistance mutation<a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html#mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>associated with a specific antibiotic, Fitness cost &lt; 1 indicates less fit and Fitness Cost &gt; 1 associated with more fit.</p>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>The antibiotic Trimethoprim has mean fitness of cost of greater than 1, indicating that the gene mutation that creates resistance to Trimethoprim does not negatively impact microbial fitness. Trimethoprim is a member of the drug class dihydrofolate reductase inhibitors. This finding correlates with the graph of fitness and drug class.</p>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+Resistance mutations in two species, Enterococcus faecium and Borrelia burgorferi, showed no evidence for a fitness cost. Other bacteria species had a fitness cost to Mean relative fitness and 95% CI of antibiotic resistance mutation associated with a given bacteria Fitness cost &lt; 1 indicates less fit.</p>
+<p>#Create a heat map with antibiotic and bacteria as the two categorical variables and fitness as a numeric variable.</p>
+<pre><code>## `summarise()` has grouped output by &#39;bacteria&#39;, &#39;antibioticType&#39;.
+## You can override using the `.groups` argument.</code></pre>
+<p><img src="my-research-book_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p>Analysis of Staph aureus gene mutations
+How many Staph aureus gene mutations associated with fitness is &lt; 1, indicating less fit?</p>
+<pre><code>##    n
+## 1 44</code></pre>
+<p>How many Staph aureus gene mutations associated with fitness is &gt; 1, indicating improved fitness?</p>
+<pre><code>##   n
+## 1 5</code></pre>
+<p>There are 5 gene mutations in Staph aureus associated with improved microbial fitness and 44 gene mutations associated with a decrease in fitness.</p>
+<p>What are the gene mutations associated with a decrease and increase in microbial fitness.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html#cb51-1" tabindex="-1"></a>BacterialessFIT <span class="ot">&lt;-</span> costR <span class="sc">%&gt;%</span> </span>
+<span id="cb51-2"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html#cb51-2" tabindex="-1"></a>  <span class="fu">select</span>(bacteria, gene_mutation, fitness) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-3"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html#cb51-3" tabindex="-1"></a>  <span class="fu">filter</span>(bacteria <span class="sc">==</span> <span class="st">&quot;S. aureus&quot;</span> <span class="sc">&amp;</span> fitness <span class="sc">&lt;</span> <span class="fl">1.0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-4"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html#cb51-4" tabindex="-1"></a>  <span class="fu">distinct</span>(gene_mutation) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-5"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html#cb51-5" tabindex="-1"></a><span class="fu">rename</span>(<span class="st">&quot;Gene Mutation&quot;</span> <span class="ot">=</span> gene_mutation)</span>
+<span id="cb51-6"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html#cb51-6" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html#cb51-7" tabindex="-1"></a>BacterialessFIT</span></code></pre></div>
+<pre><code>##     Gene Mutation
+## 1     rpoB V1080I
+## 2     rpoB V1080L
+## 3     rpoB E1084K
+## 4     rpoB D1101E
+## 5     rpoB S1127L
+## 6     rpoB S1127P
+## 7      rpoC K334N
+## 8      rpoC T925K
+## 9      rpoC T925R
+## 10    rpoC G1172C
+## 11    rpoC G1172D
+## 12      gryB G85S
+## 13     gyrB R144S
+## 14     gyrB T173I
+## 15     DHFR H150R
+## 16      EF-G A67T
+## 17     EF-G P406L
+## 18     EF-G S416F
+## 19     EF-G H457Y
+## 20      grlA S80F
+## 21      grlA S80Y
+## 22     rpoB N471Y
+## 23     rpoB N471Q
+## 24     rpoB N471G
+## 25     rpoB I527F
+## 26     rpoB S464P
+## 27     rpoB N474K
+## 28     rpoB A477V
+## 29     rpoB A477N
+## 30     rpoB R484H
+## 31     rpoB S486L
+## 32     rpoB Q468R
+## 33     rpoB Q468L
+## 34     rpoB H481Y
+## 35     rpoB D471E
+## 36     rpoB Q137L
+## 37     rpoB L466S
+## 38     rpoB H481N
+## 39 rpoB deltaL485
+## 40     rpoB D471Y
+## 41     rpoB L488S
+## 42     rpoB P519L
+## 43     rpoB A477D
+## 44     rpoB H481D</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html#cb53-1" tabindex="-1"></a>BacteriaMoreFit <span class="ot">&lt;-</span> costR <span class="sc">%&gt;%</span> </span>
+<span id="cb53-2"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html#cb53-2" tabindex="-1"></a>  <span class="fu">select</span>(bacteria, gene_mutation, fitness) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-3"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html#cb53-3" tabindex="-1"></a>  <span class="fu">filter</span>(bacteria <span class="sc">==</span> <span class="st">&quot;S. aureus&quot;</span> <span class="sc">&amp;</span> fitness <span class="sc">&gt;</span> <span class="fl">1.0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-4"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html#cb53-4" tabindex="-1"></a>  <span class="fu">distinct</span>(gene_mutation) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-5"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html#cb53-5" tabindex="-1"></a><span class="fu">rename</span>(<span class="st">&quot;Gene Mutation&quot;</span> <span class="ot">=</span> gene_mutation)</span>
+<span id="cb53-6"><a href="mean-relative-fitness-and-95-ci-of-antibiotic-resistance-mutation-1.html#cb53-6" tabindex="-1"></a>BacteriaMoreFit</span></code></pre></div>
+<pre><code>##   Gene Mutation
+## 1     DHFR L41F
+## 2     DHFR F99S
+## 3     DHFR F99Y
+## 4     grlA E84K
+## 5    grlA A116E</code></pre>
+<p>Three of the five gene mutations that are associated with improved fitness and mutations in the gene that codes for the dihydrofolate reductase inhibitor.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="the-dihydrofolate-reductase-inhibitors-appear-to-be-either-cost-free-or-the-costs-are-so-small-they-cannot-be-detected-by-the-assay-techniques-used-in-this-study.-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-Microbial-Fitness.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["my-research-book.pdf", "my-research-book.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

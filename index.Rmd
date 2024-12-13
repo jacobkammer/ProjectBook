@@ -24,9 +24,9 @@ Use second-level and higher headings within chapters like: `## A short section` 
 
 The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.
 
-# Display the Distribution of Numeric variables
 
-# Display the Relationships between numeric Variables using multiple graphing techniques
+
+
 ```{r, eval=FALSE}
 bookdown::render_book()
 ```
